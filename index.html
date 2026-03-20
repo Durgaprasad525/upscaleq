@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UpscaleQ — Learn Today. Lead Tomorrow.</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #08061a;
+    --navy: #100d30;
+    --purple: #4a3faa;
+    --purple-bright: #6657d3;
+    --lavender: #a89ee0;
+    --teal: #12a67a;
+    --teal-light: #17c791;
+    --white: #ffffff;
+    --muted: rgba(255,255,255,0.52);
+    --faint: rgba(255,255,255,0.09);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    background: var(--deep);
+    color: var(--white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 64px;
+    background: rgba(8,6,26,0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--faint);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px; font-weight: 800;
+    letter-spacing: -0.5px; color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--lavender); }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a {
+    font-size: 15px; color: var(--muted); text-decoration: none;
+    transition: color 0.2s; font-weight: 400;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--purple); color: var(--white);
+    border: none; border-radius: 10px;
+    padding: 11px 24px; font-size: 15px; font-weight: 500;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--purple-bright); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 140px 64px 100px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -250px; right: -150px;
+    width: 800px; height: 800px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(74,63,170,0.28) 0%, transparent 68%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -120px; left: -80px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(18,166,122,0.14) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(74,63,170,0.18);
+    border: 1px solid rgba(168,158,224,0.28);
+    border-radius: 30px; padding: 8px 18px;
+    font-size: 13px; color: var(--lavender);
+    letter-spacing: 0.07em; text-transform: uppercase;
+    margin-bottom: 32px; width: fit-content;
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--teal-light); flex-shrink: 0;
+  }
+
+  .hero-h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(56px, 8vw, 96px);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -3px;
+    max-width: 860px;
+    animation: fadeUp 0.7s ease 0.1s both;
+  }
+  .hero-h1 .accent { color: var(--lavender); }
+
+  .hero-sub {
+    font-size: 19px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 28px 0 44px;
+    font-weight: 400;
+    animation: fadeUp 0.7s ease 0.2s both;
+  }
+
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.7s ease 0.3s both;
+  }
+  .btn-main {
+    background: var(--teal); color: var(--white);
+    border: none; border-radius: 12px;
+    padding: 16px 32px; font-size: 16px; font-weight: 500;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-main:hover { background: var(--teal-light); transform: translateY(-2px); }
+  .btn-ghost {
+    background: transparent; color: var(--white);
+    border: 1px solid rgba(255,255,255,0.22); border-radius: 12px;
+    padding: 16px 32px; font-size: 16px; font-weight: 400;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.5); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 56px; flex-wrap: wrap;
+    margin-top: 72px; padding-top: 44px;
+    border-top: 1px solid var(--faint);
+    animation: fadeUp 0.7s ease 0.4s both;
+  }
+  .stat-n {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px; font-weight: 700; color: var(--white);
+    line-height: 1;
+  }
+  .stat-l { font-size: 14px; color: var(--muted); margin-top: 6px; }
+
+  /* ── TAGLINE BAND ── */
+  .tagline-band {
+    background: var(--purple);
+    padding: 18px 64px;
+    display: flex; align-items: center; gap: 24px;
+    overflow: hidden; flex-wrap: nowrap;
+  }
+  .tagline-text {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px; font-weight: 600;
+    white-space: nowrap; color: rgba(255,255,255,0.88);
+    letter-spacing: 0.03em;
+  }
+  .tagline-sep { color: var(--lavender); font-size: 20px; flex-shrink: 0; line-height: 1; }
+
+  /* ── SECTION BASE ── */
+  .section { padding: 112px 64px; }
+  .section-tag {
+    font-size: 13px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--teal-light); margin-bottom: 14px;
+  }
+  .section-h {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 700; letter-spacing: -1.5px;
+    line-height: 1.1; margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 17px; color: var(--muted); line-height: 1.7;
+    max-width: 540px; margin-bottom: 56px; font-weight: 400;
+  }
+
+  /* ── COURSES ── */
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .course-card {
+    background: var(--navy);
+    border: 1px solid var(--faint);
+    border-radius: 18px; padding: 32px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s;
+    cursor: pointer;
+  }
+  .course-card:hover {
+    border-color: rgba(168,158,224,0.35);
+    transform: translateY(-4px);
+  }
+  .course-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .course-card:hover::before { opacity: 1; background: var(--purple); }
+  .course-card.featured::before { opacity: 1; background: var(--teal); }
+
+  .course-badge {
+    display: inline-block; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.07em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 20px; margin-bottom: 18px;
+  }
+  .badge-hot { background: rgba(18,166,122,0.14); color: var(--teal-light); border: 1px solid rgba(18,166,122,0.28); }
+  .badge-new { background: rgba(74,63,170,0.18); color: var(--lavender); border: 1px solid rgba(168,158,224,0.28); }
+
+  .course-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px; font-weight: 600;
+    margin-bottom: 12px; line-height: 1.25;
+  }
+  .course-desc {
+    font-size: 15px; color: var(--muted); line-height: 1.65;
+    margin-bottom: 24px; font-weight: 400;
+  }
+  .course-meta { display: flex; gap: 20px; flex-wrap: wrap; }
+  .course-meta-item { font-size: 13px; color: rgba(255,255,255,0.35); }
+  .course-meta-item strong { color: rgba(255,255,255,0.62); font-weight: 500; }
+
+  /* ── WHY ── */
+  .why-section { padding: 112px 64px; background: var(--navy); }
+  .why-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start; margin-top: 56px;
+  }
+  .why-points { display: flex; flex-direction: column; gap: 32px; }
+  .why-point { display: flex; gap: 18px; align-items: flex-start; }
+  .why-icon {
+    width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+    background: rgba(74,63,170,0.2); border: 1px solid rgba(168,158,224,0.18);
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+  }
+  .why-point-title { font-size: 17px; font-weight: 500; margin-bottom: 6px; }
+  .why-point-desc { font-size: 15px; color: var(--muted); line-height: 1.65; font-weight: 400; }
+
+  .why-visual {
+    background: var(--deep); border: 1px solid var(--faint);
+    border-radius: 20px; padding: 40px; position: sticky; top: 100px;
+  }
+  .promise-q {
+    font-family: 'Syne', sans-serif;
+    font-size: 108px; font-weight: 800;
+    color: var(--purple); line-height: 1; margin-bottom: 24px;
+  }
+  .promise-tagline {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 600; margin-bottom: 28px;
+    color: var(--white); line-height: 1.3;
+  }
+  .promise-tagline em { color: var(--lavender); font-style: normal; }
+  .promise-lines { display: flex; flex-direction: column; gap: 10px; }
+  .promise-line {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px; border: 1px solid var(--faint);
+    font-size: 15px; color: rgba(255,255,255,0.75);
+  }
+  .promise-line::before {
+    content: ''; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--teal); flex-shrink: 0;
+  }
+
+  /* ── CORPORATE ── */
+  .corporate-section { padding: 112px 64px; }
+  .corporate-inner {
+    background: linear-gradient(135deg, rgba(74,63,170,0.18) 0%, rgba(18,166,122,0.08) 100%);
+    border: 1px solid rgba(168,158,224,0.18);
+    border-radius: 24px; padding: 64px;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 48px; align-items: center;
+  }
+  .corp-h {
+    font-family: 'Syne', sans-serif;
+    font-size: 38px; font-weight: 700;
+    letter-spacing: -1px; margin-bottom: 14px; line-height: 1.15;
+  }
+  .corp-sub { font-size: 17px; color: var(--muted); line-height: 1.7; max-width: 500px; font-weight: 400; }
+  .corp-actions { display: flex; flex-direction: column; gap: 12px; align-items: stretch; min-width: 180px; }
+
+  /* ── PARTNERS ── */
+  .partners-section { padding: 96px 64px; background: var(--navy); }
+  .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+  .partner-card {
+    background: var(--deep);
+    border: 1px solid var(--faint);
+    border-radius: 20px;
+    padding: 36px 32px;
+    display: flex; flex-direction: column; gap: 16px;
+    transition: border-color 0.25s, transform 0.25s;
+    text-decoration: none; color: inherit;
+    position: relative; overflow: hidden;
+  }
+  .partner-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: var(--purple); opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .partner-card:hover { border-color: rgba(168,158,224,0.35); transform: translateY(-4px); }
+  .partner-card:hover::before { opacity: 1; }
+  .partner-monogram {
+    width: 52px; height: 52px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 20px; font-weight: 800;
+    flex-shrink: 0;
+  }
+  .pm-lavu   { background: rgba(255,149,67,0.12); color: #ff9543; border: 1px solid rgba(255,149,67,0.22); }
+  .pm-dts    { background: rgba(11,112,225,0.12); color: #0b70e1; border: 1px solid rgba(11,112,225,0.22); }
+  .pm-fortune{ background: rgba(18,166,122,0.12); color: var(--teal-light); border: 1px solid rgba(18,166,122,0.22); }
+  .partner-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 19px; font-weight: 700; line-height: 1.2;
+  }
+  .partner-location {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--teal-light);
+    margin-top: 2px;
+  }
+  .partner-desc {
+    font-size: 14px; color: var(--muted); line-height: 1.65; font-weight: 400;
+    flex: 1;
+  }
+  .partner-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .partner-tag {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.05em;
+    text-transform: uppercase; padding: 4px 10px;
+    border-radius: 20px;
+    background: rgba(168,158,224,0.08);
+    border: 1px solid rgba(168,158,224,0.16);
+    color: var(--lavender);
+  }
+  .partner-link {
+    font-size: 13px; color: var(--lavender);
+    display: flex; align-items: center; gap: 6px;
+    margin-top: 4px; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .partner-card:hover .partner-link { color: var(--white); }
+
+  @media (max-width: 900px) {
+    .partners-section { padding: 72px 24px; }
+    .partners-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 52px 64px;
+    border-top: 1px solid var(--faint);
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 40px; flex-wrap: wrap;
+  }
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 800; color: var(--white);
+    text-decoration: none; display: block; margin-bottom: 8px;
+  }
+  .footer-logo span { color: var(--lavender); }
+  .footer-tagline { font-size: 14px; color: var(--muted); }
+  .footer-links { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
+  .footer-links a { font-size: 14px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--white); }
+  .footer-copy { font-size: 13px; color: rgba(255,255,255,0.2); align-self: flex-end; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 110px 24px 72px; }
+    .hero-stats { gap: 28px; }
+    .section, .corporate-section { padding: 72px 24px; }
+    .why-section { padding: 72px 24px; }
+    .why-grid { grid-template-columns: 1fr; gap: 40px; }
+    .why-visual { position: static; }
+    .corporate-inner { grid-template-columns: 1fr; padding: 36px 28px; }
+    .corp-actions { align-items: flex-start; }
+    footer { padding: 36px 24px; }
+    .tagline-band { padding: 16px 24px; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Upscale<span>Q</span></a>
+  <ul class="nav-links">
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#why">Why UpscaleQ</a></li>
+    <li><a href="#corporate">Corporate</a></li>
+    <li><a href="#partners">Partners</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta">Enroll now</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">15 years of tech expertise · Hyderabad, India</div>
+  <h1 class="hero-h1">
+    Learn today.<br>
+    <span class="accent">Lead tomorrow.</span>
+  </h1>
+  <p class="hero-sub">
+    Future-ready tech education built by industry practitioners. Real skills, real mentors, real placements — backed by 15 years of sourcing the best tech talent in India.
+  </p>
+  <div class="hero-actions">
+    <button class="btn-main">Explore courses</button>
+    <button class="btn-ghost">Corporate training ↗</button>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-n">15+</div>
+      <div class="stat-l">Years in tech</div>
+    </div>
+    <div>
+      <div class="stat-n">50+</div>
+      <div class="stat-l">Hiring partners</div>
+    </div>
+    <div>
+      <div class="stat-n">5</div>
+      <div class="stat-l">Tech tracks</div>
+    </div>
+    <div>
+      <div class="stat-n">100%</div>
+      <div class="stat-l">Placement support</div>
+    </div>
+  </div>
+</section>
+
+<!-- TAGLINE BAND -->
+<div class="tagline-band">
+  <span class="tagline-text">Learn today. Lead tomorrow.</span>
+  <span class="tagline-sep">·</span>
+  <span class="tagline-text">Industry-connected curriculum</span>
+  <span class="tagline-sep">·</span>
+  <span class="tagline-text">Real hiring partners</span>
+  <span class="tagline-sep">·</span>
+  <span class="tagline-text">Practitioner mentors</span>
+  <span class="tagline-sep">·</span>
+  <span class="tagline-text">Future-ready tech education</span>
+  <span class="tagline-sep">·</span>
+  <span class="tagline-text">Learn today. Lead tomorrow.</span>
+</div>
+
+<!-- COURSES -->
+<section class="section" id="courses">
+  <div class="section-tag">Courses</div>
+  <h2 class="section-h">What do you want to master?</h2>
+  <p class="section-sub">Hands-on, industry-built programs designed for where tech is going — not where it's been.</p>
+
+  <div class="courses-grid">
+    <div class="course-card featured">
+      <div class="course-badge badge-hot">Most popular</div>
+      <div class="course-title">Generative AI &amp; Prompt Engineering</div>
+      <div class="course-desc">Master LLMs, prompt design, RAG pipelines, and AI application development. The skill every company is hiring for right now.</div>
+      <div class="course-meta">
+        <div class="course-meta-item"><strong>8 weeks</strong></div>
+        <div class="course-meta-item"><strong>All levels</strong></div>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-badge badge-hot">High demand</div>
+      <div class="course-title">AI / ML Engineering</div>
+      <div class="course-desc">From fundamentals to production — model training, evaluation, MLOps, and deployment at scale.</div>
+      <div class="course-meta">
+        <div class="course-meta-item"><strong>20 weeks</strong></div>
+        <div class="course-meta-item"><strong>Intermediate</strong></div>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-badge badge-hot">High demand</div>
+      <div class="course-title">Full Stack Development</div>
+      <div class="course-desc">End-to-end web development — React, Node.js, databases, APIs, cloud deployment, and modern DevOps practices.</div>
+      <div class="course-meta">
+        <div class="course-meta-item"><strong>24 weeks</strong></div>
+        <div class="course-meta-item"><strong>Beginner–mid</strong></div>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-badge badge-hot">High demand</div>
+      <div class="course-title">Data Science &amp; Engineering</div>
+      <div class="course-desc">Analytics, pipelines, Python, SQL, visualization, and building data products that drive real business decisions.</div>
+      <div class="course-meta">
+        <div class="course-meta-item"><strong>16 weeks</strong></div>
+        <div class="course-meta-item"><strong>All levels</strong></div>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-badge badge-new">Future track</div>
+      <div class="course-title">Quantum Computing Foundations</div>
+      <div class="course-desc">Get ahead of the curve. Qubits, quantum gates, circuits, and real-world applications. India's first industry-connected quantum track.</div>
+      <div class="course-meta">
+        <div class="course-meta-item"><strong>8 weeks</strong></div>
+        <div class="course-meta-item"><strong>Advanced</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why-section" id="why">
+  <div class="section-tag">Why UpscaleQ</div>
+  <h2 class="section-h">Built different. On purpose.</h2>
+
+  <div class="why-grid">
+    <div class="why-points">
+      <div class="why-point">
+        <div class="why-icon">⚡</div>
+        <div>
+          <div class="why-point-title">15 years of industry depth</div>
+          <div class="why-point-desc">Our curriculum isn't academic theory. It's built from 15 years of working in and sourcing for the tech industry across India.</div>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-icon">🎯</div>
+        <div>
+          <div class="why-point-title">Direct hiring pipeline</div>
+          <div class="why-point-desc">We have sourcing partnerships with 50+ companies. Your placement isn't a promise — it's a structured pipeline with real partners.</div>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-icon">🧠</div>
+        <div>
+          <div class="why-point-title">Practitioner mentors only</div>
+          <div class="why-point-desc">Every mentor is actively working in the industry. No retired academics. No theory-only instructors. Real experience, real guidance.</div>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-icon">🚀</div>
+        <div>
+          <div class="why-point-title">Future-first curriculum</div>
+          <div class="why-point-desc">We teach where tech is going, not where it's been. GenAI, Quantum, Agentic systems — skills that matter in 2026 and beyond.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-visual">
+      <div class="promise-q">Q</div>
+      <div class="promise-tagline">
+        Learn today.<br><em>Lead tomorrow.</em>
+      </div>
+      <div class="promise-lines">
+        <div class="promise-line">Quality-vetted curriculum</div>
+        <div class="promise-line">Quality mentors &amp; coaches</div>
+        <div class="promise-line">Quality hiring partners</div>
+        <div class="promise-line">Quality career outcomes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORPORATE -->
+<section class="corporate-section" id="corporate">
+  <div class="corporate-inner">
+    <div>
+      <div class="section-tag">Corporate training</div>
+      <div class="corp-h">Upskill your entire tech team.</div>
+      <p class="corp-sub">
+        Custom training programs for companies. We work with your team's existing stack, timelines, and goals. Batch training, individual tracks, or full L&amp;D partnerships.
+      </p>
+    </div>
+    <div class="corp-actions">
+      <button class="btn-main">Get a proposal</button>
+      <button class="btn-ghost">See case studies</button>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNICAL PARTNERS -->
+<section class="partners-section" id="partners">
+  <div class="section-tag">Technical Partners</div>
+  <h2 class="section-h">Backed by industry leaders.</h2>
+  <p class="section-sub" style="margin-bottom:0;">Our technical partnerships bring real-world depth to everything we teach — from curriculum design to placement networks.</p>
+
+  <div class="partners-grid">
+
+    <a class="partner-card" href="https://www.lavutechsolutions.com/" target="_blank" rel="noopener">
+      <div class="partner-monogram pm-lavu">LT</div>
+      <div>
+        <div class="partner-name">Lavu Tech Solutions</div>
+        <div class="partner-location">India</div>
+      </div>
+      <div class="partner-desc">A full-spectrum IT solutions and services firm delivering technology-driven outcomes across enterprise and mid-market segments. Curriculum partner for practical engineering tracks.</div>
+      <div class="partner-tags">
+        <span class="partner-tag">IT Solutions</span>
+        <span class="partner-tag">Enterprise Tech</span>
+        <span class="partner-tag">Services</span>
+      </div>
+      <div class="partner-link">lavutechsolutions.com ↗</div>
+    </a>
+
+    <a class="partner-card" href="https://www.digitaltechsolutions.com.sg/" target="_blank" rel="noopener">
+      <div class="partner-monogram pm-dts">DT</div>
+      <div>
+        <div class="partner-name">Digital Tech Solutions</div>
+        <div class="partner-location">Singapore</div>
+      </div>
+      <div class="partner-desc">Singapore-based technology partner offering AI/ML, IoT, cloud migration, and application development. Brings global perspective and Southeast Asian hiring networks to UpscaleQ learners.</div>
+      <div class="partner-tags">
+        <span class="partner-tag">AI / ML</span>
+        <span class="partner-tag">Cloud</span>
+        <span class="partner-tag">App Dev</span>
+        <span class="partner-tag">IoT</span>
+      </div>
+      <div class="partner-link">digitaltechsolutions.com.sg ↗</div>
+    </a>
+
+    <a class="partner-card" href="https://www.fortuneits.com/" target="_blank" rel="noopener">
+      <div class="partner-monogram pm-fortune">FI</div>
+      <div>
+        <div class="partner-name">Fortune ITS</div>
+        <div class="partner-location">India</div>
+      </div>
+      <div class="partner-desc">An established IT services company bridging talent and technology. Fortune ITS strengthens our hiring pipeline and contributes domain expertise to industry-specific training modules.</div>
+      <div class="partner-tags">
+        <span class="partner-tag">IT Services</span>
+        <span class="partner-tag">Talent Pipeline</span>
+        <span class="partner-tag">Domain Expertise</span>
+      </div>
+      <div class="partner-link">fortuneits.com ↗</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div>
+    <a href="/" class="footer-logo">Upscale<span>Q</span></a>
+    <div class="footer-tagline">Learn today. Lead tomorrow.</div>
+  </div>
+  <div class="footer-links">
+    <a href="#courses">Courses</a>
+    <a href="#why">Why UpscaleQ</a>
+    <a href="#corporate">Corporate</a>
+    <a href="mailto:hello@upscaleq.com">hello@upscaleq.com</a>
+  </div>
+  <div class="footer-copy">© 2026 UpscaleQ · upscaleq.com</div>
+</footer>
+
+</body>
+</html>
