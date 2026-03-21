@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Science & Engineering — UpscaleQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root{--deep:#08061a;--navy:#100d30;--purple:#4a3faa;--purple-bright:#6657d3;--lavender:#a89ee0;--teal:#12a67a;--teal-light:#17c791;--white:#ffffff;--muted:rgba(255,255,255,0.52);--faint:rgba(255,255,255,0.09);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;background:var(--deep);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 64px;background:rgba(8,6,26,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--faint);}
+  .nav-logo{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;letter-spacing:-0.5px;color:var(--white);text-decoration:none;}.nav-logo span{color:var(--lavender);}
+  .nav-right{display:flex;align-items:center;gap:24px;}.nav-back{font-size:14px;color:var(--muted);text-decoration:none;transition:color 0.2s;}.nav-back:hover{color:var(--white);}
+  .nav-cta{background:var(--purple);color:var(--white);border:none;border-radius:10px;padding:11px 24px;font-size:15px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s;text-decoration:none;white-space:nowrap;}.nav-cta:hover{background:var(--purple-bright);}
+  .course-hero{padding:140px 64px 80px;position:relative;overflow:hidden;}.course-hero::before{content:'';position:absolute;top:-200px;right:-100px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(74,63,170,0.22) 0%,transparent 68%);pointer-events:none;}
+  .breadcrumb{font-size:13px;color:var(--muted);margin-bottom:24px;}.breadcrumb a{color:var(--muted);text-decoration:none;}.breadcrumb a:hover{color:var(--white);}
+  .course-badge-lg{display:inline-flex;align-items:center;gap:8px;background:rgba(18,166,122,0.14);border:1px solid rgba(18,166,122,0.28);border-radius:30px;padding:7px 16px;font-size:12px;color:var(--teal-light);letter-spacing:0.07em;text-transform:uppercase;margin-bottom:24px;}.course-badge-lg::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal-light);flex-shrink:0;}
+  .course-h{font-family:'Syne',sans-serif;font-size:clamp(40px,5.5vw,72px);font-weight:800;letter-spacing:-2.5px;line-height:1.0;margin-bottom:20px;max-width:800px;}.course-h span{color:var(--lavender);}
+  .course-lead{font-size:18px;color:var(--muted);line-height:1.7;max-width:580px;margin-bottom:40px;}
+  .course-meta-bar{display:flex;flex-wrap:wrap;gap:32px;padding:28px 0;border-top:1px solid var(--faint);border-bottom:1px solid var(--faint);margin-bottom:40px;}
+  .meta-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;}.meta-value{font-family:'Syne',sans-serif;font-size:18px;font-weight:600;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-main{background:var(--teal);color:var(--white);border:none;border-radius:12px;padding:15px 30px;font-size:16px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s,transform 0.15s;text-decoration:none;}.btn-main:hover{background:var(--teal-light);transform:translateY(-2px);}
+  .btn-ghost{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.22);border-radius:12px;padding:15px 30px;font-size:16px;font-weight:400;cursor:pointer;font-family:'DM Sans',sans-serif;transition:border-color 0.2s;text-decoration:none;}.btn-ghost:hover{border-color:rgba(255,255,255,0.5);}
+  .content-wrap{max-width:1100px;margin:0 auto;padding:0 64px 100px;display:grid;grid-template-columns:1fr 340px;gap:64px;align-items:start;}
+  .section-block{margin-bottom:72px;}.block-tag{font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal-light);margin-bottom:12px;}.block-h{font-family:'Syne',sans-serif;font-size:30px;font-weight:700;letter-spacing:-0.8px;margin-bottom:20px;}
+  .curriculum-list{display:flex;flex-direction:column;gap:12px;}.week-item{background:var(--navy);border:1px solid var(--faint);border-radius:14px;overflow:hidden;}
+  .week-header{display:flex;align-items:center;gap:16px;padding:18px 22px;cursor:pointer;transition:background 0.2s;}.week-header:hover{background:rgba(255,255,255,0.03);}
+  .week-num{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--lavender);min-width:52px;text-transform:uppercase;letter-spacing:0.06em;}.week-title{font-size:16px;font-weight:500;flex:1;}.week-arrow{font-size:12px;color:var(--muted);transition:transform 0.2s;}
+  .week-item.open .week-arrow{transform:rotate(180deg);}.week-body{display:none;padding:0 22px 18px 90px;}.week-item.open .week-body{display:block;}
+  .week-topics{list-style:none;display:flex;flex-direction:column;gap:8px;}.week-topics li{font-size:14px;color:var(--muted);display:flex;align-items:flex-start;gap:10px;}.week-topics li::before{content:'→';color:var(--teal);flex-shrink:0;}
+  .bp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}.bp-card{background:var(--navy);border:1px solid var(--faint);border-radius:16px;padding:24px;}.bp-icon{font-size:24px;margin-bottom:12px;}.bp-title{font-size:15px;font-weight:600;margin-bottom:8px;}.bp-desc{font-size:14px;color:var(--muted);line-height:1.6;}
+  .faq-list{display:flex;flex-direction:column;gap:10px;}.faq-item{background:var(--navy);border:1px solid var(--faint);border-radius:14px;overflow:hidden;}
+  .faq-q{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;font-size:15px;font-weight:500;gap:16px;transition:background 0.2s;}.faq-q:hover{background:rgba(255,255,255,0.03);}
+  .faq-icon{font-size:20px;color:var(--lavender);flex-shrink:0;transition:transform 0.2s;}.faq-item.open .faq-icon{transform:rotate(45deg);}
+  .faq-a{display:none;padding:0 22px 18px;font-size:14px;color:var(--muted);line-height:1.7;}.faq-item.open .faq-a{display:block;}
+  .sidebar{position:sticky;top:100px;}.sidebar-card{background:var(--navy);border:1px solid rgba(168,158,224,0.2);border-radius:20px;padding:32px;margin-bottom:20px;}
+  .price-label{font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:6px;}.price-val{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;margin-bottom:4px;}.price-note{font-size:13px;color:var(--muted);margin-bottom:24px;}
+  .sidebar-btn{display:block;width:100%;text-align:center;padding:14px;background:var(--teal);color:var(--white);border:none;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;transition:background 0.2s;text-decoration:none;margin-bottom:10px;}.sidebar-btn:hover{background:var(--teal-light);}
+  .sidebar-btn-ghost{display:block;width:100%;text-align:center;padding:14px;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.2);border-radius:12px;font-family:'DM Sans',sans-serif;font-size:15px;cursor:pointer;transition:border-color 0.2s;text-decoration:none;}.sidebar-btn-ghost:hover{border-color:rgba(255,255,255,0.5);}
+  .sidebar-divider{border:none;border-top:1px solid var(--faint);margin:20px 0;}.sidebar-detail{display:flex;justify-content:space-between;font-size:14px;margin-bottom:12px;}.sidebar-detail-label{color:var(--muted);}.sidebar-detail-value{font-weight:500;}
+  .includes-list{display:flex;flex-direction:column;gap:10px;margin-top:16px;}.includes-item{display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,0.75);}.includes-item::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0;}
+  @media(max-width:900px){nav{padding:16px 24px;}.course-hero{padding:110px 24px 60px;}.content-wrap{grid-template-columns:1fr;padding:0 24px 60px;gap:40px;}.sidebar{position:static;}.bp-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo">Upscale<span>Q</span></a>
+  <div class="nav-right">
+    <a href="../index.html#courses" class="nav-back">← All courses</a>
+    <a href="../enroll.html" class="nav-cta">Enroll now</a>
+  </div>
+</nav>
+
+<section class="course-hero">
+  <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#courses">Courses</a> / Data Science &amp; Engineering</div>
+  <div class="course-badge-lg">High demand</div>
+  <h1 class="course-h">Data Science &amp;<br><span>Engineering</span></h1>
+  <p class="course-lead">Analytics, pipelines, Python, SQL, visualisation, and building data products that drive real business decisions. Learn how companies turn raw data into competitive advantage.</p>
+  <div class="course-meta-bar">
+    <div class="meta-item"><div class="meta-label">Duration</div><div class="meta-value">16 Weeks</div></div>
+    <div class="meta-item"><div class="meta-label">Level</div><div class="meta-value">All levels</div></div>
+    <div class="meta-item"><div class="meta-label">Mode</div><div class="meta-value">Live + Hybrid</div></div>
+    <div class="meta-item"><div class="meta-label">Placement</div><div class="meta-value">Supported</div></div>
+  </div>
+  <div class="hero-actions">
+    <a href="../enroll.html" class="btn-main">Enroll now</a>
+    <a href="mailto:hello@upscaleq.com" class="btn-ghost">Talk to an advisor</a>
+  </div>
+</section>
+
+<div class="content-wrap">
+  <div class="main-col">
+    <div class="section-block">
+      <div class="block-tag">Curriculum</div>
+      <h2 class="block-h">16 weeks to job-ready data professional</h2>
+      <div class="curriculum-list">
+        <div class="week-item open">
+          <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">Wk 1–2</span><span class="week-title">Python &amp; Data Foundations</span><span class="week-arrow">▼</span></div>
+          <div class="week-body"><ul class="week-topics"><li>Python essentials: data structures, comprehensions, file I/O</li><li>NumPy for numerical computing</li><li>Pandas: DataFrames, indexing, merging, groupby</li><li>Jupyter notebooks and reproducible analysis workflows</li></ul></div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">Wk 3–4</span><span class="week-title">SQL &amp; Database Querying</span><span class="week-arrow">▼</span></div>
+          <div class="week-body"><ul class="week-topics"><li>SQL from basics to advanced: joins, CTEs, window functions</li><li>Query optimisation and execution plans</li><li>PostgreSQL and BigQuery hands-on</li><li>Connecting Python to databases with SQLAlchemy</li></ul></div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">Wk 5–7</span><span class="week-title">Statistics &amp; Exploratory Data Analysis</span><span class="week-arrow">▼</span></div>
+          <div class="week-body"><ul class="week-topics"><li>Descriptive statistics, distributions, and hypothesis testing</li><li>A/B testing methodology and statistical significance</li><li>EDA with Pandas, Matplotlib, Seaborn, Plotly</li><li>Identifying data quality issues and handling missing values</li></ul></div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">Wk 8–10</span><span class="week-title">Data Visualisation &amp; BI</span><span class="week-arrow">▼</span></div>
+          <div class="week-body"><ul class="week-topics"><li>Dashboard design principles: clarity, hierarchy, context</li><li>Tableau and Power BI: building production dashboards</li><li>Plotly Dash for interactive Python visualisations</li><li>Storytelling with data: communicating insights to stakeholders</li></ul></div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">Wk 11–13</span><span class="week-title">Data Engineering &amp; Pipelines</span><span class="week-arrow">▼</span></div>
+          <div class="week-body"><ul class="week-topics"><li>ETL vs ELT: modern data stack architecture</li><li>Apache Airflow: scheduling and orchestrating pipelines</li><li>dbt: transforming data in the warehouse</li><li>Data lakes, lakehouses, and warehouse platforms (Snowflake, BigQuery)</li></ul></div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">Wk 14–16</span><span class="week-title">ML for Data Scientists &amp; Capstone</span><span class="week-arrow">▼</span></div>
+          <div class="week-body"><ul class="week-topics"><li>Scikit-learn: supervised and unsupervised ML for business problems</li><li>Model interpretability: SHAP, feature importance</li><li>End-to-end data project: ingestion → analysis → insight → presentation</li><li>Interview preparation and placement support</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="block-tag">Industry Best Practices</div>
+      <h2 class="block-h">How great data teams operate</h2>
+      <div class="bp-grid">
+        <div class="bp-card"><div class="bp-icon">📐</div><div class="bp-title">Data contracts</div><div class="bp-desc">Define the schema and freshness SLA for every data source you depend on. Data contracts prevent silent pipeline failures.</div></div>
+        <div class="bp-card"><div class="bp-icon">🧹</div><div class="bp-title">Data quality first</div><div class="bp-desc">Garbage in, garbage out. Implement automated data quality checks with Great Expectations or dbt tests before any analysis.</div></div>
+        <div class="bp-card"><div class="bp-icon">🗂️</div><div class="bp-title">Document your datasets</div><div class="bp-desc">Every dataset needs a data dictionary. Who owns it? What does each column mean? When was it last updated? Non-negotiable.</div></div>
+        <div class="bp-card"><div class="bp-icon">📊</div><div class="bp-title">Metric definitions alignment</div><div class="bp-desc">One source of truth for key metrics. "Revenue" must mean the same thing to every team — define it once, centrally.</div></div>
+        <div class="bp-card"><div class="bp-icon">🔐</div><div class="bp-title">Data governance</div><div class="bp-desc">Know where PII lives. Implement column-level access controls and audit logs. GDPR and data privacy are table stakes now.</div></div>
+        <div class="bp-card"><div class="bp-icon">⚡</div><div class="bp-title">Incremental loading</div><div class="bp-desc">Never reload entire tables daily. Use incremental patterns (watermarks, CDC) to keep pipelines fast and cost-efficient.</div></div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="block-tag">FAQ</div>
+      <h2 class="block-h">Common questions</h2>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need a maths or statistics background?<span class="faq-icon">+</span></div><div class="faq-a">No prior stats knowledge required. We cover all the statistics you need within the course — designed for learners who last touched maths in school.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is SQL really that important for data science?<span class="faq-icon">+</span></div><div class="faq-a">SQL is the most used skill in data jobs, bar none. We dedicate two full weeks to it — and you'll use it every week after that. Employers always ask about SQL in interviews.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the difference between a data scientist and a data engineer?<span class="faq-icon">+</span></div><div class="faq-a">Data scientists analyse data and build models. Data engineers build the pipelines that deliver clean data to analysts and scientists. This course covers both — making you a strong T-shaped data professional.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will I work with real datasets?<span class="faq-icon">+</span></div><div class="faq-a">Yes — we use real industry datasets throughout (finance, e-commerce, healthcare). Your capstone project is a full analysis of a real-world business problem.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What tools does this course use?<span class="faq-icon">+</span></div><div class="faq-a">Python (Pandas, Scikit-learn, Plotly), SQL (PostgreSQL, BigQuery), Tableau, Power BI, dbt, Apache Airflow, and Snowflake. All are widely used in industry data teams today.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="sidebar-card">
+      <div class="price-label">Course fee</div>
+      <div class="price-val">₹49,999</div>
+      <div class="price-note">EMI options available · No-cost 6-month plans</div>
+      <a href="../enroll.html" class="sidebar-btn">Enroll now →</a>
+      <a href="mailto:hello@upscaleq.com" class="sidebar-btn-ghost">Talk to an advisor</a>
+      <hr class="sidebar-divider">
+      <div class="sidebar-detail"><span class="sidebar-detail-label">Duration</span><span class="sidebar-detail-value">16 weeks</span></div>
+      <div class="sidebar-detail"><span class="sidebar-detail-label">Level</span><span class="sidebar-detail-value">All levels</span></div>
+      <div class="sidebar-detail"><span class="sidebar-detail-label">Live sessions</span><span class="sidebar-detail-value">3× per week</span></div>
+      <div class="sidebar-detail"><span class="sidebar-detail-label">Language</span><span class="sidebar-detail-value">English</span></div>
+      <div class="sidebar-detail"><span class="sidebar-detail-label">Certificate</span><span class="sidebar-detail-value">Yes</span></div>
+      <hr class="sidebar-divider">
+      <div style="font-size:13px;font-weight:500;margin-bottom:4px;">This course includes</div>
+      <div class="includes-list">
+        <div class="includes-item">16 weeks of live instruction</div>
+        <div class="includes-item">Recorded sessions (lifetime access)</div>
+        <div class="includes-item">Real-world capstone project</div>
+        <div class="includes-item">1:1 mentor sessions</div>
+        <div class="includes-item">Placement support &amp; referrals</div>
+        <div class="includes-item">Alumni network access</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleWeek(header){header.parentElement.classList.toggle('open');}
+  function toggleFaq(q){q.parentElement.classList.toggle('open');}
+</script>
+</body>
+</html>

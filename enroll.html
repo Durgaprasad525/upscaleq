@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enroll Now — UpscaleQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #08061a;
+    --navy: #100d30;
+    --purple: #4a3faa;
+    --purple-bright: #6657d3;
+    --lavender: #a89ee0;
+    --teal: #12a67a;
+    --teal-light: #17c791;
+    --white: #ffffff;
+    --muted: rgba(255,255,255,0.52);
+    --faint: rgba(255,255,255,0.09);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px; line-height: 1.6;
+    background: var(--deep); color: var(--white);
+    overflow-x: hidden; -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 64px;
+    background: rgba(8,6,26,0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--faint);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px; font-weight: 800;
+    letter-spacing: -0.5px; color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--lavender); }
+  .nav-back {
+    font-size: 14px; color: var(--muted); text-decoration: none;
+    display: flex; align-items: center; gap: 6px;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--white); }
+
+  .page-wrap {
+    min-height: 100vh;
+    padding: 140px 64px 80px;
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 72px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .enroll-left { padding-top: 8px; }
+  .section-tag {
+    font-size: 13px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--teal-light); margin-bottom: 14px;
+  }
+  .enroll-h {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(40px, 5vw, 60px);
+    font-weight: 800; letter-spacing: -2px; line-height: 1.05;
+    margin-bottom: 20px;
+  }
+  .enroll-h span { color: var(--lavender); }
+  .enroll-sub {
+    font-size: 17px; color: var(--muted); line-height: 1.7;
+    max-width: 460px; margin-bottom: 48px;
+  }
+
+  .trust-items { display: flex; flex-direction: column; gap: 18px; }
+  .trust-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 18px 20px;
+    background: var(--navy);
+    border: 1px solid var(--faint);
+    border-radius: 14px;
+  }
+  .trust-icon {
+    width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(74,63,170,0.2); border: 1px solid rgba(168,158,224,0.18);
+    display: flex; align-items: center; justify-content: center; font-size: 18px;
+  }
+  .trust-title { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+  .trust-desc { font-size: 14px; color: var(--muted); line-height: 1.55; }
+
+  /* FORM CARD */
+  .form-card {
+    background: var(--navy);
+    border: 1px solid rgba(168,158,224,0.18);
+    border-radius: 24px; padding: 48px 40px;
+    position: sticky; top: 100px;
+    align-self: start;
+  }
+  .form-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .form-sub { font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+
+  .form-group { margin-bottom: 20px; }
+  label {
+    display: block; font-size: 13px; font-weight: 500;
+    color: rgba(255,255,255,0.65); margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+  input, select, textarea {
+    width: 100%; padding: 13px 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px; color: var(--white);
+    font-family: 'DM Sans', sans-serif; font-size: 15px;
+    outline: none; transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
+  input:focus, select:focus, textarea:focus {
+    border-color: rgba(168,158,224,0.5);
+    background: rgba(255,255,255,0.07);
+  }
+  select option { background: var(--navy); color: var(--white); }
+  textarea { resize: vertical; min-height: 90px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .submit-btn {
+    width: 100%; padding: 15px;
+    background: var(--teal); color: var(--white);
+    border: none; border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px; font-weight: 500;
+    cursor: pointer; margin-top: 8px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .submit-btn:hover { background: var(--teal-light); transform: translateY(-1px); }
+  .form-note {
+    text-align: center; font-size: 13px;
+    color: rgba(255,255,255,0.3); margin-top: 16px;
+  }
+
+  /* SUCCESS STATE */
+  .success-msg {
+    display: none;
+    text-align: center; padding: 32px 0;
+  }
+  .success-icon {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: rgba(18,166,122,0.15); border: 2px solid var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; margin: 0 auto 20px;
+  }
+  .success-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 700; margin-bottom: 10px;
+  }
+  .success-sub { font-size: 15px; color: var(--muted); line-height: 1.6; }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .page-wrap { grid-template-columns: 1fr; padding: 110px 24px 60px; gap: 40px; }
+    .form-card { position: static; padding: 32px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Upscale<span>Q</span></a>
+  <a href="index.html" class="nav-back">← Back to home</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="enroll-left">
+    <div class="section-tag">Enroll Now</div>
+    <h1 class="enroll-h">Start your<br><span>tech journey</span><br>today.</h1>
+    <p class="enroll-sub">
+      Fill in the form and our team will get in touch within 24 hours to discuss the right course, schedule, and batch for you.
+    </p>
+
+    <div class="trust-items">
+      <div class="trust-item">
+        <div class="trust-icon">🎓</div>
+        <div>
+          <div class="trust-title">Personalised guidance</div>
+          <div class="trust-desc">Our advisors assess your background and recommend the right track and learning pace for you.</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">💼</div>
+        <div>
+          <div class="trust-title">Placement support from day one</div>
+          <div class="trust-desc">You're connected to our hiring network the moment you enroll — not just at graduation.</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🔄</div>
+        <div>
+          <div class="trust-title">Flexible batches</div>
+          <div class="trust-desc">Weekend, weekday, and evening batches available. Learn without disrupting your current commitments.</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🌐</div>
+        <div>
+          <div class="trust-title">Online &amp; hybrid options</div>
+          <div class="trust-desc">Join live sessions from anywhere or attend in-person at our Hyderabad centre — your choice.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <div id="formContent">
+      <div class="form-title">Get enrolled</div>
+      <div class="form-sub">We respond within 24 hours.</div>
+
+      <form id="enrollForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First name</label>
+            <input type="text" placeholder="Ravi" required>
+          </div>
+          <div class="form-group">
+            <label>Last name</label>
+            <input type="text" placeholder="Kumar" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email address</label>
+          <input type="email" placeholder="ravi@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label>Phone number</label>
+          <input type="tel" placeholder="+91 98765 43210" required>
+        </div>
+
+        <div class="form-group">
+          <label>Course interested in</label>
+          <select required>
+            <option value="" disabled selected>Select a course</option>
+            <option>Generative AI &amp; Prompt Engineering</option>
+            <option>AI / ML Engineering</option>
+            <option>Full Stack Development</option>
+            <option>Data Science &amp; Engineering</option>
+            <option>Quantum Computing Foundations</option>
+            <option>Corporate Training (Custom)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Current background</label>
+          <select>
+            <option value="" disabled selected>Select your background</option>
+            <option>Student / Fresher</option>
+            <option>Working professional (non-tech)</option>
+            <option>Working professional (tech)</option>
+            <option>Entrepreneur / Founder</option>
+            <option>HR / Talent / L&D Manager</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Anything you'd like us to know? (optional)</label>
+          <textarea placeholder="Your goals, preferred schedule, questions..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit enrolment request →</button>
+        <div class="form-note">No spam. We'll only reach out about your enquiry.</div>
+      </form>
+    </div>
+
+    <div class="success-msg" id="successMsg">
+      <div class="success-icon">✓</div>
+      <div class="success-title">You're on the list!</div>
+      <div class="success-sub">
+        Thank you for reaching out. Our team will contact you within 24 hours to discuss your course and batch options.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  }
+</script>
+</body>
+</html>

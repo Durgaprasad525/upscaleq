@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generative AI & Prompt Engineering — UpscaleQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #08061a; --navy: #100d30; --purple: #4a3faa;
+    --purple-bright: #6657d3; --lavender: #a89ee0;
+    --teal: #12a67a; --teal-light: #17c791;
+    --white: #ffffff; --muted: rgba(255,255,255,0.52); --faint: rgba(255,255,255,0.09);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.6; background: var(--deep); color: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 64px; background: rgba(8,6,26,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--faint); }
+  .nav-logo { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--lavender); }
+  .nav-right { display: flex; align-items: center; gap: 24px; }
+  .nav-back { font-size: 14px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--white); }
+  .nav-cta { background: var(--purple); color: var(--white); border: none; border-radius: 10px; padding: 11px 24px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s; text-decoration: none; white-space: nowrap; }
+  .nav-cta:hover { background: var(--purple-bright); }
+
+  /* HERO */
+  .course-hero { padding: 140px 64px 80px; position: relative; overflow: hidden; }
+  .course-hero::before { content: ''; position: absolute; top: -200px; right: -100px; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(74,63,170,0.22) 0%, transparent 68%); pointer-events: none; }
+  .breadcrumb { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--muted); text-decoration: none; } .breadcrumb a:hover { color: var(--white); }
+  .course-badge-lg { display: inline-flex; align-items: center; gap: 8px; background: rgba(18,166,122,0.14); border: 1px solid rgba(18,166,122,0.28); border-radius: 30px; padding: 7px 16px; font-size: 12px; color: var(--teal-light); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 24px; }
+  .course-badge-lg::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal-light); flex-shrink: 0; }
+  .course-h { font-family: 'Syne', sans-serif; font-size: clamp(40px, 5.5vw, 72px); font-weight: 800; letter-spacing: -2.5px; line-height: 1.0; margin-bottom: 20px; max-width: 800px; }
+  .course-h span { color: var(--lavender); }
+  .course-lead { font-size: 18px; color: var(--muted); line-height: 1.7; max-width: 580px; margin-bottom: 40px; }
+  .course-meta-bar { display: flex; flex-wrap: wrap; gap: 32px; padding: 28px 0; border-top: 1px solid var(--faint); border-bottom: 1px solid var(--faint); margin-bottom: 40px; }
+  .meta-item { }
+  .meta-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .meta-value { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 600; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-main { background: var(--teal); color: var(--white); border: none; border-radius: 12px; padding: 15px 30px; font-size: 16px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s, transform 0.15s; text-decoration: none; }
+  .btn-main:hover { background: var(--teal-light); transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.22); border-radius: 12px; padding: 15px 30px; font-size: 16px; font-weight: 400; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: border-color 0.2s; text-decoration: none; }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.5); }
+
+  /* CONTENT */
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 0 64px 100px; display: grid; grid-template-columns: 1fr 340px; gap: 64px; align-items: start; }
+  .main-col { }
+  .sidebar { position: sticky; top: 100px; }
+
+  .section-block { margin-bottom: 72px; }
+  .block-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 12px; }
+  .block-h { font-family: 'Syne', sans-serif; font-size: 30px; font-weight: 700; letter-spacing: -0.8px; margin-bottom: 20px; }
+
+  /* CURRICULUM */
+  .curriculum-list { display: flex; flex-direction: column; gap: 12px; }
+  .week-item { background: var(--navy); border: 1px solid var(--faint); border-radius: 14px; overflow: hidden; }
+  .week-header { display: flex; align-items: center; gap: 16px; padding: 18px 22px; cursor: pointer; transition: background 0.2s; }
+  .week-header:hover { background: rgba(255,255,255,0.03); }
+  .week-num { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; color: var(--lavender); min-width: 52px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .week-title { font-size: 16px; font-weight: 500; flex: 1; }
+  .week-arrow { font-size: 12px; color: var(--muted); transition: transform 0.2s; }
+  .week-item.open .week-arrow { transform: rotate(180deg); }
+  .week-body { display: none; padding: 0 22px 18px 90px; }
+  .week-item.open .week-body { display: block; }
+  .week-topics { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .week-topics li { font-size: 14px; color: var(--muted); display: flex; align-items: flex-start; gap: 10px; }
+  .week-topics li::before { content: '→'; color: var(--teal); flex-shrink: 0; }
+
+  /* BEST PRACTICES */
+  .bp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .bp-card { background: var(--navy); border: 1px solid var(--faint); border-radius: 16px; padding: 24px; }
+  .bp-icon { font-size: 24px; margin-bottom: 12px; }
+  .bp-title { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+  .bp-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 10px; }
+  .faq-item { background: var(--navy); border: 1px solid var(--faint); border-radius: 14px; overflow: hidden; }
+  .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; cursor: pointer; font-size: 15px; font-weight: 500; gap: 16px; transition: background 0.2s; }
+  .faq-q:hover { background: rgba(255,255,255,0.03); }
+  .faq-icon { font-size: 20px; color: var(--lavender); flex-shrink: 0; transition: transform 0.2s; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-a { display: none; padding: 0 22px 18px; font-size: 14px; color: var(--muted); line-height: 1.7; }
+  .faq-item.open .faq-a { display: block; }
+
+  /* SIDEBAR */
+  .sidebar-card { background: var(--navy); border: 1px solid rgba(168,158,224,0.2); border-radius: 20px; padding: 32px; margin-bottom: 20px; }
+  .price-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 6px; }
+  .price-val { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; margin-bottom: 4px; }
+  .price-note { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+  .sidebar-btn { display: block; width: 100%; text-align: center; padding: 14px; background: var(--teal); color: var(--white); border: none; border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; text-decoration: none; margin-bottom: 10px; }
+  .sidebar-btn:hover { background: var(--teal-light); }
+  .sidebar-btn-ghost { display: block; width: 100%; text-align: center; padding: 14px; background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 15px; cursor: pointer; transition: border-color 0.2s; text-decoration: none; }
+  .sidebar-btn-ghost:hover { border-color: rgba(255,255,255,0.5); }
+  .sidebar-divider { border: none; border-top: 1px solid var(--faint); margin: 20px 0; }
+  .sidebar-detail { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 12px; }
+  .sidebar-detail-label { color: var(--muted); }
+  .sidebar-detail-value { font-weight: 500; }
+  .includes-list { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+  .includes-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.75); }
+  .includes-item::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .course-hero { padding: 110px 24px 60px; }
+    .content-wrap { grid-template-columns: 1fr; padding: 0 24px 60px; gap: 40px; }
+    .sidebar { position: static; }
+    .bp-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Upscale<span>Q</span></a>
+  <div class="nav-right">
+    <a href="../index.html#courses" class="nav-back">← All courses</a>
+    <a href="../enroll.html" class="nav-cta">Enroll now</a>
+  </div>
+</nav>
+
+<section class="course-hero">
+  <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#courses">Courses</a> / Generative AI &amp; Prompt Engineering</div>
+  <div class="course-badge-lg">Most popular</div>
+  <h1 class="course-h">Generative AI &amp;<br><span>Prompt Engineering</span></h1>
+  <p class="course-lead">Master LLMs, RAG pipelines, agentic systems, and AI application development. The skill every company is hiring for right now — taught by practitioners who build with it daily.</p>
+  <div class="course-meta-bar">
+    <div class="meta-item"><div class="meta-label">Duration</div><div class="meta-value">8 Weeks</div></div>
+    <div class="meta-item"><div class="meta-label">Level</div><div class="meta-value">All levels</div></div>
+    <div class="meta-item"><div class="meta-label">Mode</div><div class="meta-value">Live + Hybrid</div></div>
+    <div class="meta-item"><div class="meta-label">Placement</div><div class="meta-value">Supported</div></div>
+  </div>
+  <div class="hero-actions">
+    <a href="../enroll.html" class="btn-main">Enroll now</a>
+    <a href="mailto:hello@upscaleq.com" class="btn-ghost">Talk to an advisor</a>
+  </div>
+</section>
+
+<div class="content-wrap">
+  <div class="main-col">
+
+    <!-- CURRICULUM -->
+    <div class="section-block">
+      <div class="block-tag">Curriculum</div>
+      <h2 class="block-h">What you'll learn, week by week</h2>
+      <div class="curriculum-list">
+        <div class="week-item open">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <span class="week-num">Week 1</span>
+            <span class="week-title">Foundations of Generative AI</span>
+            <span class="week-arrow">▼</span>
+          </div>
+          <div class="week-body">
+            <ul class="week-topics">
+              <li>How LLMs work: transformers, attention, and tokens explained simply</li>
+              <li>The GenAI landscape: GPT-4o, Claude, Gemini, Mistral, Llama</li>
+              <li>API access and rate limits — OpenAI, Anthropic, Google AI</li>
+              <li>Use-case mapping: where GenAI adds real business value</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <span class="week-num">Week 2</span>
+            <span class="week-title">Prompt Engineering Mastery</span>
+            <span class="week-arrow">▼</span>
+          </div>
+          <div class="week-body">
+            <ul class="week-topics">
+              <li>Zero-shot, few-shot, and chain-of-thought prompting techniques</li>
+              <li>Prompt templates, system prompts, and role-based prompting</li>
+              <li>Controlling output format: JSON, structured data, markdown</li>
+              <li>Prompt injection risks and defensive prompt design</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <span class="week-num">Week 3</span>
+            <span class="week-title">Building RAG Pipelines</span>
+            <span class="week-arrow">▼</span>
+          </div>
+          <div class="week-body">
+            <ul class="week-topics">
+              <li>Retrieval-Augmented Generation (RAG) architecture and why it matters</li>
+              <li>Embeddings, vector stores: Pinecone, Weaviate, ChromaDB</li>
+              <li>Document chunking strategies and semantic search</li>
+              <li>Building a full RAG app with LangChain / LlamaIndex</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <span class="week-num">Week 4</span>
+            <span class="week-title">Agentic AI Systems</span>
+            <span class="week-arrow">▼</span>
+          </div>
+          <div class="week-body">
+            <ul class="week-topics">
+              <li>AI agents: ReAct, tool use, and autonomous planning loops</li>
+              <li>LangGraph, AutoGen, and CrewAI frameworks hands-on</li>
+              <li>Building multi-agent workflows</li>
+              <li>Memory types: in-context, external, episodic</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <span class="week-num">Week 5</span>
+            <span class="week-title">Fine-tuning &amp; Model Customisation</span>
+            <span class="week-arrow">▼</span>
+          </div>
+          <div class="week-body">
+            <ul class="week-topics">
+              <li>When to fine-tune vs. prompt-engineer vs. RAG</li>
+              <li>LoRA and QLoRA: parameter-efficient fine-tuning</li>
+              <li>Dataset preparation and instruction-tuning</li>
+              <li>Running fine-tuned models with Hugging Face + Ollama</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <span class="week-num">Week 6</span>
+            <span class="week-title">AI Application Development</span>
+            <span class="week-arrow">▼</span>
+          </div>
+          <div class="week-body">
+            <ul class="week-topics">
+              <li>Building AI-powered apps with FastAPI + Streamlit / Next.js</li>
+              <li>Streaming responses and real-time UX patterns</li>
+              <li>Integrating AI into existing products via APIs</li>
+              <li>Designing for latency, cost, and token efficiency</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <span class="week-num">Week 7</span>
+            <span class="week-title">Evaluation, Safety &amp; Responsible AI</span>
+            <span class="week-arrow">▼</span>
+          </div>
+          <div class="week-body">
+            <ul class="week-topics">
+              <li>Evaluating LLM outputs: RAGAS, LLM-as-judge, human eval</li>
+              <li>Hallucination detection and mitigation strategies</li>
+              <li>Guardrails: content filtering, output validation</li>
+              <li>Bias, fairness, and responsible AI deployment</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <span class="week-num">Week 8</span>
+            <span class="week-title">Capstone Project &amp; Deployment</span>
+            <span class="week-arrow">▼</span>
+          </div>
+          <div class="week-body">
+            <ul class="week-topics">
+              <li>Build and deploy a production-ready GenAI application</li>
+              <li>Cloud deployment: AWS Bedrock, Azure OpenAI, GCP Vertex AI</li>
+              <li>Cost optimisation and monitoring in production</li>
+              <li>Portfolio presentation and placement prep</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INDUSTRY BEST PRACTICES -->
+    <div class="section-block">
+      <div class="block-tag">Industry Best Practices</div>
+      <h2 class="block-h">How the best teams ship AI</h2>
+      <div class="bp-grid">
+        <div class="bp-card">
+          <div class="bp-icon">🏗️</div>
+          <div class="bp-title">Prompt versioning &amp; governance</div>
+          <div class="bp-desc">Top teams treat prompts like code — version-controlled, peer-reviewed, and tested before deployment.</div>
+        </div>
+        <div class="bp-card">
+          <div class="bp-icon">📊</div>
+          <div class="bp-title">Eval-driven development</div>
+          <div class="bp-desc">Build evaluation datasets first. Never ship a prompt change without running it against a benchmark suite.</div>
+        </div>
+        <div class="bp-card">
+          <div class="bp-icon">💰</div>
+          <div class="bp-title">Token cost management</div>
+          <div class="bp-desc">Implement caching, model tiering, and prompt compression. Unchecked token usage can drain budgets fast.</div>
+        </div>
+        <div class="bp-card">
+          <div class="bp-icon">🛡️</div>
+          <div class="bp-title">Security-first AI design</div>
+          <div class="bp-desc">Validate all LLM outputs before acting on them. Assume adversarial inputs and design prompt injection defences.</div>
+        </div>
+        <div class="bp-card">
+          <div class="bp-icon">🔁</div>
+          <div class="bp-title">Human-in-the-loop for high stakes</div>
+          <div class="bp-desc">Automate low-risk decisions. Always keep humans in the loop for actions that are irreversible or legally significant.</div>
+        </div>
+        <div class="bp-card">
+          <div class="bp-icon">📈</div>
+          <div class="bp-title">Observability &amp; logging</div>
+          <div class="bp-desc">Log every LLM call with full input/output and latency. Use tools like LangSmith or Helicone for production tracing.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section-block">
+      <div class="block-tag">FAQ</div>
+      <h2 class="block-h">Common questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Do I need a coding background to join this course?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">No prior coding experience is required for the prompt engineering track. However, the application development weeks (6–8) use Python. We provide a pre-course Python primer for non-coders.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What tools and APIs will I need access to?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">We use OpenAI, Anthropic, and open-source models via Hugging Face. API costs are minimal (under ₹1,000 for the full course). We guide you through setting up each tool on day one.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Is this course suitable for product managers and non-engineers?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">Absolutely. Weeks 1–5 are designed for all roles — PMs, marketers, analysts, and founders. Weeks 6–8 go deeper into engineering. You can choose to focus on the first half and still build real working prototypes.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Will I get a certificate at the end?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">Yes. You'll receive an UpscaleQ certificate upon completing the capstone project. We also help you build a GitHub portfolio with your GenAI project to showcase to employers.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What kind of jobs can I get after this?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">Prompt Engineer, AI Product Manager, GenAI Developer, LLM Engineer, AI Solutions Architect. Our hiring partners are actively recruiting for these roles — your profile goes directly to their teams.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Are there weekend batches available?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">Yes — we run weekday morning, weekday evening, and weekend batches. Batch schedules are confirmed at enrolment based on demand. All live sessions are recorded so you never miss a class.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sidebar">
+    <div class="sidebar-card">
+      <div class="price-label">Course fee</div>
+      <div class="price-val">₹24,999</div>
+      <div class="price-note">EMI options available · No-cost 3-month plans</div>
+      <a href="../enroll.html" class="sidebar-btn">Enroll now →</a>
+      <a href="mailto:hello@upscaleq.com" class="sidebar-btn-ghost">Talk to an advisor</a>
+      <hr class="sidebar-divider">
+      <div class="sidebar-detail"><span class="sidebar-detail-label">Duration</span><span class="sidebar-detail-value">8 weeks</span></div>
+      <div class="sidebar-detail"><span class="sidebar-detail-label">Level</span><span class="sidebar-detail-value">All levels</span></div>
+      <div class="sidebar-detail"><span class="sidebar-detail-label">Live sessions</span><span class="sidebar-detail-value">3× per week</span></div>
+      <div class="sidebar-detail"><span class="sidebar-detail-label">Language</span><span class="sidebar-detail-value">English</span></div>
+      <div class="sidebar-detail"><span class="sidebar-detail-label">Certificate</span><span class="sidebar-detail-value">Yes</span></div>
+      <hr class="sidebar-divider">
+      <div style="font-size:13px;font-weight:500;margin-bottom:4px;">This course includes</div>
+      <div class="includes-list">
+        <div class="includes-item">8 weeks of live instruction</div>
+        <div class="includes-item">Recorded sessions (lifetime access)</div>
+        <div class="includes-item">Hands-on project portfolio</div>
+        <div class="includes-item">1:1 mentor sessions</div>
+        <div class="includes-item">Placement support &amp; referrals</div>
+        <div class="includes-item">Community access (alumni network)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleWeek(header) {
+    const item = header.parentElement;
+    item.classList.toggle('open');
+  }
+  function toggleFaq(q) {
+    const item = q.parentElement;
+    item.classList.toggle('open');
+  }
+</script>
+</body>
+</html>

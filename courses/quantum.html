@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quantum Computing Foundations — UpscaleQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root{--deep:#08061a;--navy:#100d30;--purple:#4a3faa;--purple-bright:#6657d3;--lavender:#a89ee0;--teal:#12a67a;--teal-light:#17c791;--white:#ffffff;--muted:rgba(255,255,255,0.52);--faint:rgba(255,255,255,0.09);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;background:var(--deep);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 64px;background:rgba(8,6,26,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--faint);}
+  .nav-logo{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;letter-spacing:-0.5px;color:var(--white);text-decoration:none;}.nav-logo span{color:var(--lavender);}
+  .nav-right{display:flex;align-items:center;gap:24px;}.nav-back{font-size:14px;color:var(--muted);text-decoration:none;transition:color 0.2s;}.nav-back:hover{color:var(--white);}
+  .nav-cta{background:var(--purple);color:var(--white);border:none;border-radius:10px;padding:11px 24px;font-size:15px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s;text-decoration:none;white-space:nowrap;}.nav-cta:hover{background:var(--purple-bright);}
+  .course-hero{padding:140px 64px 80px;position:relative;overflow:hidden;}.course-hero::before{content:'';position:absolute;top:-200px;right:-100px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(74,63,170,0.3) 0%,transparent 68%);pointer-events:none;}
+  .breadcrumb{font-size:13px;color:var(--muted);margin-bottom:24px;}.breadcrumb a{color:var(--muted);text-decoration:none;}.breadcrumb a:hover{color:var(--white);}
+  .course-badge-lg{display:inline-flex;align-items:center;gap:8px;background:rgba(74,63,170,0.18);border:1px solid rgba(168,158,224,0.28);border-radius:30px;padding:7px 16px;font-size:12px;color:var(--lavender);letter-spacing:0.07em;text-transform:uppercase;margin-bottom:24px;}.course-badge-lg::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--lavender);flex-shrink:0;}
+  .course-h{font-family:'Syne',sans-serif;font-size:clamp(40px,5.5vw,72px);font-weight:800;letter-spacing:-2.5px;line-height:1.0;margin-bottom:20px;max-width:800px;}.course-h span{color:var(--lavender);}
+  .course-lead{font-size:18px;color:var(--muted);line-height:1.7;max-width:580px;margin-bottom:40px;}
+  .course-meta-bar{display:flex;flex-wrap:wrap;gap:32px;padding:28px 0;border-top:1px solid var(--faint);border-bottom:1px solid var(--faint);margin-bottom:40px;}
+  .meta-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;}.meta-value{font-family:'Syne',sans-serif;font-size:18px;font-weight:600;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-main{background:var(--teal);color:var(--white);border:none;border-radius:12px;padding:15px 30px;font-size:16px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s,transform 0.15s;text-decoration:none;}.btn-main:hover{background:var(--teal-light);transform:translateY(-2px);}
+  .btn-ghost{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.22);border-radius:12px;padding:15px 30px;font-size:16px;font-weight:400;cursor:pointer;font-family:'DM Sans',sans-serif;transition:border-color 0.2s;text-decoration:none;}.btn-ghost:hover{border-color:rgba(255,255,255,0.5);}
+  .content-wrap{max-width:1100px;margin:0 auto;padding:0 64px 100px;display:grid;grid-template-columns:1fr 340px;gap:64px;align-items:start;}
+  .section-block{margin-bottom:72px;}.block-tag{font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal-light);margin-bottom:12px;}.block-h{font-family:'Syne',sans-serif;font-size:30px;font-weight:700;letter-spacing:-0.8px;margin-bottom:20px;}
+  .curriculum-list{display:flex;flex-direction:column;gap:12px;}.week-item{background:var(--navy);border:1px solid var(--faint);border-radius:14px;overflow:hidden;}
+  .week-header{display:flex;align-items:center;gap:16px;padding:18px 22px;cursor:pointer;transition:background 0.2s;}.week-header:hover{background:rgba(255,255,255,0.03);}
+  .week-num{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--lavender);min-width:52px;text-transform:uppercase;letter-spacing:0.06em;}.week-title{font-size:16px;font-weight:500;flex:1;}.week-arrow{font-size:12px;color:var(--muted);transition:transform 0.2s;}
+  .week-item.open .week-arrow{transform:rotate(180deg);}.week-body{display:none;padding:0 22px 18px 90px;}.week-item.open .week-body{display:block;}
+  .week-topics{list-style:none;display:flex;flex-direction:column;gap:8px;}.week-topics li{font-size:14px;color:var(--muted);display:flex;align-items:flex-start;gap:10px;}.week-topics li::before{content:'→';color:var(--teal);flex-shrink:0;}
+  .bp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}.bp-card{background:var(--navy);border:1px solid var(--faint);border-radius:16px;padding:24px;}.bp-icon{font-size:24px;margin-bottom:12px;}.bp-title{font-size:15px;font-weight:600;margin-bottom:8px;}.bp-desc{font-size:14px;color:var(--muted);line-height:1.6;}
+  .faq-list{display:flex;flex-direction:column;gap:10px;}.faq-item{background:var(--navy);border:1px solid var(--faint);border-radius:14px;overflow:hidden;}
+  .faq-q{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;font-size:15px;font-weight:500;gap:16px;transition:background 0.2s;}.faq-q:hover{background:rgba(255,255,255,0.03);}
+  .faq-icon{font-size:20px;color:var(--lavender);flex-shrink:0;transition:transform 0.2s;}.faq-item.open .faq-icon{transform:rotate(45deg);}
+  .faq-a{display:none;padding:0 22px 18px;font-size:14px;color:var(--muted);line-height:1.7;}.faq-item.open .faq-a{display:block;}
+  .sidebar{position:sticky;top:100px;}.sidebar-card{background:var(--navy);border:1px solid rgba(168,158,224,0.2);border-radius:20px;padding:32px;margin-bottom:20px;}
+  .price-label{font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:6px;}.price-val{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;margin-bottom:4px;}.price-note{font-size:13px;color:var(--muted);margin-bottom:24px;}
+  .sidebar-btn{display:block;width:100%;text-align:center;padding:14px;background:var(--teal);color:var(--white);border:none;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;transition:background 0.2s;text-decoration:none;margin-bottom:10px;}.sidebar-btn:hover{background:var(--teal-light);}
+  .sidebar-btn-ghost{display:block;width:100%;text-align:center;padding:14px;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.2);border-radius:12px;font-family:'DM Sans',sans-serif;font-size:15px;cursor:pointer;transition:border-color 0.2s;text-decoration:none;}.sidebar-btn-ghost:hover{border-color:rgba(255,255,255,0.5);}
+  .sidebar-divider{border:none;border-top:1px solid var(--faint);margin:20px 0;}.sidebar-detail{display:flex;justify-content:space-between;font-size:14px;margin-bottom:12px;}.sidebar-detail-label{color:var(--muted);}.sidebar-detail-value{font-weight:500;}
+  .includes-list{display:flex;flex-direction:column;gap:10px;margin-top:16px;}.includes-item{display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,0.75);}.includes-item::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0;}
+  .early-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(168,158,224,0.1);border:1px solid rgba(168,158,224,0.2);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--lavender);margin-bottom:20px;line-height:1.5;}
+  @media(max-width:900px){nav{padding:16px 24px;}.course-hero{padding:110px 24px 60px;}.content-wrap{grid-template-columns:1fr;padding:0 24px 60px;gap:40px;}.sidebar{position:static;}.bp-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo">Upscale<span>Q</span></a>
+  <div class="nav-right">
+    <a href="../index.html#courses" class="nav-back">← All courses</a>
+    <a href="../enroll.html" class="nav-cta">Enroll now</a>
+  </div>
+</nav>
+
+<section class="course-hero">
+  <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#courses">Courses</a> / Quantum Computing Foundations</div>
+  <div class="course-badge-lg">Future track</div>
+  <h1 class="course-h">Quantum Computing<br><span>Foundations</span></h1>
+  <p class="course-lead">Get ahead of the curve. Qubits, quantum gates, circuits, and real-world applications — India's first industry-connected quantum computing track. Be among the first practitioners in the country.</p>
+  <div class="course-meta-bar">
+    <div class="meta-item"><div class="meta-label">Duration</div><div class="meta-value">8 Weeks</div></div>
+    <div class="meta-item"><div class="meta-label">Level</div><div class="meta-value">Advanced</div></div>
+    <div class="meta-item"><div class="meta-label">Mode</div><div class="meta-value">Live + Online</div></div>
+    <div class="meta-item"><div class="meta-label">Cohort</div><div class="meta-value">Limited seats</div></div>
+  </div>
+  <div class="hero-actions">
+    <a href="../enroll.html" class="btn-main">Reserve your seat</a>
+    <a href="mailto:hello@upscaleq.com" class="btn-ghost">Talk to an advisor</a>
+  </div>
+</section>
+
+<div class="content-wrap">
+  <div class="main-col">
+    <div class="section-block">
+      <div class="block-tag">Curriculum</div>
+      <h2 class="block-h">8 weeks: from qubits to quantum applications</h2>
+      <div class="curriculum-list">
+        <div class="week-item open">
+          <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">Week 1</span><span class="week-title">Classical vs. Quantum: The Foundations</span><span class="week-arrow">▼</span></div>
+          <div class="week-body"><ul class="week-topics"><li>Why quantum computing — the limits of classical computers</li><li>Qubits, superposition, and quantum states explained intuitively</li><li>Dirac notation (bra-ket) and the mathematics of quantum states</li><li>Introduction to Qiskit and IBM Quantum hardware access</li></ul></div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">Week 2</span><span class="week-title">Quantum Gates &amp; Circuits</span><span class="week-arrow">▼</span></div>
+          <div class="week-body"><ul class="week-topics"><li>Single-qubit gates: X, Y, Z, H, S, T gates — what they do</li><li>Multi-qubit gates: CNOT, Toffoli, SWAP</li><li>Building and running quantum circuits in Qiskit</li><li>Circuit depth, gate fidelity, and real hardware constraints</li></ul></div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">Week 3</span><span class="week-title">Entanglement &amp; Quantum Measurement</span><span class="week-arrow">▼</span></div>
+          <div class="week-body"><ul class="week-topics"><li>Quantum entanglement: Bell states and EPR pairs</li><li>Measurement, collapse, and the Born rule</li><li>Quantum teleportation protocol — step by step</li><li>Noise, decoherence, and error sources in real hardware</li></ul></div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">Week 4</span><span class="week-title">Quantum Algorithms I</span><span class="week-arrow">▼</span></div>
+          <div class="week-body"><ul class="week-topics"><li>Deutsch-Jozsa and Bernstein-Vazirani: quantum speedup illustrated</li><li>Grover's algorithm: quantum search in O(√N)</li><li>Quantum Fourier Transform (QFT)</li><li>Phase estimation algorithm</li></ul></div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">Week 5</span><span class="week-title">Quantum Algorithms II &amp; Cryptography</span><span class="week-arrow">▼</span></div>
+          <div class="week-body"><ul class="week-topics"><li>Shor's algorithm and its impact on RSA encryption</li><li>Post-quantum cryptography: NIST-standardised algorithms</li><li>Quantum key distribution (QKD) and BB84 protocol</li><li>The quantum threat timeline for enterprises</li></ul></div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">Week 6</span><span class="week-title">Quantum Machine Learning</span><span class="week-arrow">▼</span></div>
+          <div class="week-body"><ul class="week-topics"><li>Variational Quantum Eigensolver (VQE) and QAOA</li><li>Quantum neural networks and parameterised circuits</li><li>Hybrid classical-quantum ML pipelines with PennyLane</li><li>Where QML genuinely adds value today</li></ul></div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">Week 7</span><span class="week-title">Industry Applications</span><span class="week-arrow">▼</span></div>
+          <div class="week-body"><ul class="week-topics"><li>Quantum optimisation for logistics, finance, and supply chain</li><li>Drug discovery and molecular simulation use cases</li><li>Quantum computing in banking: portfolio optimisation, risk</li><li>Guest sessions with IBM Quantum and IonQ practitioners</li></ul></div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">Week 8</span><span class="week-title">The Road Ahead &amp; Capstone</span><span class="week-arrow">▼</span></div>
+          <div class="week-body"><ul class="week-topics"><li>The quantum hardware landscape: superconducting, ion trap, photonic</li><li>Error correction: surface codes and the path to fault-tolerance</li><li>Capstone: implement and present a quantum algorithm or application</li><li>Career paths, research opportunities, and what to do next</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="block-tag">Industry Best Practices</div>
+      <h2 class="block-h">How quantum practitioners approach the field today</h2>
+      <div class="bp-grid">
+        <div class="bp-card"><div class="bp-icon">🔬</div><div class="bp-title">Simulate before you run</div><div class="bp-desc">Always validate circuits on a classical simulator before submitting to quantum hardware. Real QPU time is precious and expensive.</div></div>
+        <div class="bp-card"><div class="bp-icon">📉</div><div class="bp-title">Minimise circuit depth</div><div class="bp-desc">Shorter circuits mean less decoherence. Professional quantum developers obsess over gate count and circuit optimisation.</div></div>
+        <div class="bp-card"><div class="bp-icon">🧩</div><div class="bp-title">Hybrid is the near-term reality</div><div class="bp-desc">Pure quantum computing isn't ready for most applications. Real teams build hybrid quantum-classical systems that play to the strengths of both.</div></div>
+        <div class="bp-card"><div class="bp-icon">📊</div><div class="bp-title">Benchmark against classical</div><div class="bp-desc">Always compare your quantum solution to the best classical approach. "Quantum advantage" must be demonstrated, not assumed.</div></div>
+        <div class="bp-card"><div class="bp-icon">🔐</div><div class="bp-title">Prepare for post-quantum now</div><div class="bp-desc">Enterprise teams are already auditing cryptographic infrastructure. The quantum threat to encryption is a planning horizon issue today.</div></div>
+        <div class="bp-card"><div class="bp-icon">🤝</div><div class="bp-title">Collaborate across disciplines</div><div class="bp-desc">The best quantum teams combine physicists, mathematicians, software engineers, and domain experts. No one discipline owns it.</div></div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="block-tag">FAQ</div>
+      <h2 class="block-h">Common questions</h2>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How much physics and maths do I need?<span class="faq-icon">+</span></div><div class="faq-a">You need comfort with basic linear algebra (vectors, matrices) and complex numbers. Full physics training is not required. We cover all the necessary quantum mechanics concepts in plain language within the course.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will I program actual quantum computers?<span class="faq-icon">+</span></div><div class="faq-a">Yes. You'll run circuits on real IBM Quantum hardware via cloud access, and use simulators throughout. Quantum computing is accessible over the cloud today.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is quantum computing actually useful today, or is it hype?<span class="faq-icon">+</span></div><div class="faq-a">Both, honestly. We cover this directly: where it genuinely adds value now (molecular simulation, optimisation), where it's overhyped, and what the realistic 5-year trajectory looks like.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What career paths does this open?<span class="faq-icon">+</span></div><div class="faq-a">Quantum Software Engineer, Quantum Research Scientist, Post-Quantum Security Analyst, Quantum Solutions Architect. Companies like IBM, Google, IonQ, and Indian defence/space agencies are hiring now.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Why are seats limited for this cohort?<span class="faq-icon">+</span></div><div class="faq-a">This is our inaugural quantum cohort and we want to give every learner close attention. We're keeping the first batch to 20 learners to ensure quality. Future batches will scale.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="sidebar-card">
+      <div class="early-badge">Inaugural cohort · Limited to 20 seats</div>
+      <div class="price-label">Course fee</div>
+      <div class="price-val">₹34,999</div>
+      <div class="price-note">Early cohort pricing · EMI available</div>
+      <a href="../enroll.html" class="sidebar-btn">Reserve your seat →</a>
+      <a href="mailto:hello@upscaleq.com" class="sidebar-btn-ghost">Talk to an advisor</a>
+      <hr class="sidebar-divider">
+      <div class="sidebar-detail"><span class="sidebar-detail-label">Duration</span><span class="sidebar-detail-value">8 weeks</span></div>
+      <div class="sidebar-detail"><span class="sidebar-detail-label">Level</span><span class="sidebar-detail-value">Advanced</span></div>
+      <div class="sidebar-detail"><span class="sidebar-detail-label">Live sessions</span><span class="sidebar-detail-value">3× per week</span></div>
+      <div class="sidebar-detail"><span class="sidebar-detail-label">Hardware access</span><span class="sidebar-detail-value">IBM Quantum Cloud</span></div>
+      <div class="sidebar-detail"><span class="sidebar-detail-label">Certificate</span><span class="sidebar-detail-value">Yes</span></div>
+      <hr class="sidebar-divider">
+      <div style="font-size:13px;font-weight:500;margin-bottom:4px;">This course includes</div>
+      <div class="includes-list">
+        <div class="includes-item">8 weeks of live instruction</div>
+        <div class="includes-item">IBM Quantum hardware access</div>
+        <div class="includes-item">Recorded sessions (lifetime access)</div>
+        <div class="includes-item">Capstone project</div>
+        <div class="includes-item">1:1 mentor sessions</div>
+        <div class="includes-item">Industry practitioner guest sessions</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleWeek(header){header.parentElement.classList.toggle('open');}
+  function toggleFaq(q){q.parentElement.classList.toggle('open');}
+</script>
+</body>
+</html>
