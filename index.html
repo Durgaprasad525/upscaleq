@@ -4,166 +4,181 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UpscaleQ — Learn Today. Lead Tomorrow.</title>
-  <meta name="description" content="Future-ready tech education built by industry practitioners. Real skills, real mentors, real placements — backed by 15 years of sourcing the best tech talent." />
+  <meta name="description" content="Future-ready tech education built by industry practitioners. Real skills, real mentors, real placements — Hyderabad, India." />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+  <!-- NAV -->
   <header class="nav-wrapper" id="navbar">
     <nav class="nav container">
-      <a href="index.html" class="nav__logo">Upscale<span>Q</span></a>
-
+      <a href="index.html" class="nav__logo">Upscale<em>Q</em></a>
       <ul class="nav__links" id="navLinks">
         <li><a href="#courses" class="nav__link">Courses</a></li>
-        <li><a href="#how-it-works" class="nav__link">How it works</a></li>
         <li><a href="#mentors" class="nav__link">Mentors</a></li>
         <li><a href="#partners" class="nav__link">Partners</a></li>
         <li><a href="#contact" class="nav__link">Contact</a></li>
       </ul>
-
       <div class="nav__actions">
-        <a href="enroll.html" class="btn btn--primary">Get started</a>
-        <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
+        <a href="enroll.html" class="btn btn--primary">Enroll now</a>
+        <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
     </nav>
-
-    <!-- Mobile drawer -->
     <div class="nav__drawer" id="navDrawer">
       <ul class="nav__drawer-links">
-        <li><a href="#courses" class="nav__link">Courses</a></li>
-        <li><a href="#how-it-works" class="nav__link">How it works</a></li>
-        <li><a href="#mentors" class="nav__link">Mentors</a></li>
+        <li><a href="#courses"  class="nav__link">Courses</a></li>
+        <li><a href="#mentors"  class="nav__link">Mentors</a></li>
         <li><a href="#partners" class="nav__link">Partners</a></li>
-        <li><a href="#contact" class="nav__link">Contact</a></li>
-        <li><a href="enroll.html" class="btn btn--primary btn--full">Get started</a></li>
+        <li><a href="#contact"  class="nav__link">Contact</a></li>
+        <li><a href="enroll.html" class="btn btn--primary btn--full">Enroll now</a></li>
       </ul>
     </div>
   </header>
 
   <main>
 
-    <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+    <!-- ───────────── HERO ───────────── -->
     <section class="hero" id="hero">
-      <!-- Background blobs -->
-      <div class="hero__blob hero__blob--1" aria-hidden="true"></div>
-      <div class="hero__blob hero__blob--2" aria-hidden="true"></div>
-      <div class="hero__grid-texture" aria-hidden="true"></div>
-
       <div class="container hero__inner">
+
+        <!-- Left: text -->
         <div class="hero__content">
-          <div class="hero__eyebrow reveal">
-            <span class="dot"></span>
-            15 years of tech expertise &nbsp;·&nbsp; Hyderabad, India
-          </div>
+          <p class="hero__eyebrow reveal">Hyderabad, India &nbsp;·&nbsp; 15 years in tech</p>
 
           <h1 class="hero__headline reveal reveal--delay-1">
-            Learn today.<br />
-            <span class="text-gradient">Lead tomorrow.</span>
+            Learn today.<br>
+            <em>Lead tomorrow.</em>
           </h1>
 
           <p class="hero__sub reveal reveal--delay-2">
             Future-ready tech education built by industry practitioners.
-            Real skills, real mentors, real placements — backed by 15 years
-            of sourcing the best tech talent in India.
+            Real skills, real mentors, real placements — backed by
+            15 years of sourcing the best tech talent in India.
           </p>
 
           <div class="hero__actions reveal reveal--delay-3">
-            <a href="#courses" class="btn btn--primary btn--lg">Browse courses</a>
-            <a href="#how-it-works" class="btn btn--ghost btn--lg">See how it works</a>
+            <a href="#courses"   class="btn btn--primary btn--lg">Browse courses</a>
+            <a href="enroll.html" class="btn btn--ghost   btn--lg">Talk to an advisor</a>
           </div>
 
-          <div class="hero__trust reveal reveal--delay-4">
-            <div class="trust-badge">
-              <span class="trust-badge__num mono">15+</span>
-              <span class="trust-badge__label">Years in tech</span>
+          <div class="hero__stats reveal reveal--delay-4">
+            <div class="hero__stat">
+              <span class="hero__stat-num mono">15+</span>
+              <span class="hero__stat-label">Years in tech</span>
             </div>
-            <div class="trust-divider" aria-hidden="true"></div>
-            <div class="trust-badge">
-              <span class="trust-badge__num mono">50+</span>
-              <span class="trust-badge__label">Hiring partners</span>
+            <div class="hero__stat">
+              <span class="hero__stat-num mono">50+</span>
+              <span class="hero__stat-label">Hiring partners</span>
             </div>
-            <div class="trust-divider" aria-hidden="true"></div>
-            <div class="trust-badge">
-              <span class="trust-badge__num mono">100%</span>
-              <span class="trust-badge__label">Placement support</span>
+            <div class="hero__stat">
+              <span class="hero__stat-num mono">100%</span>
+              <span class="hero__stat-label">Placement support</span>
             </div>
-            <div class="trust-divider" aria-hidden="true"></div>
-            <div class="trust-badge">
-              <span class="trust-badge__num mono">5</span>
-              <span class="trust-badge__label">Tech tracks</span>
+            <div class="hero__stat">
+              <span class="hero__stat-num mono">5</span>
+              <span class="hero__stat-label">Tech tracks</span>
             </div>
           </div>
         </div>
 
-        <!-- Floating course preview cards -->
-        <div class="hero__float-wrap reveal reveal--delay-2" aria-hidden="true">
-          <div class="float-card float-card--1">
-            <div class="float-card__icon">⚡</div>
-            <div>
-              <div class="float-card__title">GenAI &amp; Prompt Eng.</div>
-              <div class="float-card__sub">8 weeks · All levels</div>
-            </div>
-            <div class="float-card__badge">Hot</div>
+        <!-- Right: course index — functional, not decorative -->
+        <nav class="hero__index reveal reveal--delay-2" aria-label="Course index">
+          <div class="hero__index-header">
+            <span class="hero__index-title">Industry tracks</span>
+            <span class="hero__index-count">5 courses</span>
           </div>
-          <div class="float-card float-card--2">
-            <div class="float-card__icon">🧠</div>
-            <div>
-              <div class="float-card__title">AI / ML Engineering</div>
-              <div class="float-card__sub">20 weeks · Intermediate</div>
-            </div>
-            <div class="float-card__badge">Popular</div>
-          </div>
-          <div class="float-card float-card--3">
-            <span class="float-card__stat mono">500+</span>
-            <span class="float-card__stat-label">Learners enrolled this month</span>
-          </div>
-        </div>
+          <ol class="hero__index-list">
+            <li>
+              <a href="courses/generative-ai.html" class="hero__index-item">
+                <span class="hero__index-num">01</span>
+                <span class="hero__index-name">Generative AI &amp; Prompt Engineering</span>
+                <span class="hero__index-weeks">8 wk</span>
+                <span class="hero__index-item-arrow">→</span>
+              </a>
+            </li>
+            <li>
+              <a href="courses/ai-ml.html" class="hero__index-item">
+                <span class="hero__index-num">02</span>
+                <span class="hero__index-name">AI / ML Engineering</span>
+                <span class="hero__index-weeks">20 wk</span>
+                <span class="hero__index-item-arrow">→</span>
+              </a>
+            </li>
+            <li>
+              <a href="courses/fullstack.html" class="hero__index-item">
+                <span class="hero__index-num">03</span>
+                <span class="hero__index-name">Full Stack Development</span>
+                <span class="hero__index-weeks">24 wk</span>
+                <span class="hero__index-item-arrow">→</span>
+              </a>
+            </li>
+            <li>
+              <a href="courses/data-science.html" class="hero__index-item">
+                <span class="hero__index-num">04</span>
+                <span class="hero__index-name">Data Science &amp; Engineering</span>
+                <span class="hero__index-weeks">16 wk</span>
+                <span class="hero__index-item-arrow">→</span>
+              </a>
+            </li>
+            <li>
+              <a href="courses/quantum.html" class="hero__index-item">
+                <span class="hero__index-num">05</span>
+                <span class="hero__index-name">Quantum Computing Foundations</span>
+                <span class="hero__index-weeks">8 wk</span>
+                <span class="hero__index-item-arrow">→</span>
+              </a>
+            </li>
+          </ol>
+        </nav>
+
       </div>
     </section>
 
-    <!-- ═══════════════════════════ STATS BAR ═══════════════════════════ -->
-    <section class="stats-bar">
+    <!-- ───────────── STATS ───────────── -->
+    <div class="stats-bar">
       <div class="container stats-bar__inner">
         <div class="stat-item reveal">
           <span class="stat-item__num mono" data-target="500">0</span>
           <span class="stat-item__suffix mono">+</span>
-          <span class="stat-item__label">Students enrolled</span>
+          <span class="stat-item__label">students enrolled</span>
         </div>
         <div class="stat-divider" aria-hidden="true"></div>
         <div class="stat-item reveal reveal--delay-1">
           <span class="stat-item__num mono" data-target="50">0</span>
           <span class="stat-item__suffix mono">+</span>
-          <span class="stat-item__label">Hiring partners</span>
+          <span class="stat-item__label">hiring partners</span>
         </div>
         <div class="stat-divider" aria-hidden="true"></div>
         <div class="stat-item reveal reveal--delay-2">
           <span class="stat-item__num mono" data-target="5">0</span>
           <span class="stat-item__suffix mono"></span>
-          <span class="stat-item__label">Tech tracks</span>
+          <span class="stat-item__label">tech tracks</span>
         </div>
         <div class="stat-divider" aria-hidden="true"></div>
         <div class="stat-item reveal reveal--delay-3">
           <span class="stat-item__num mono" data-target="100">0</span>
           <span class="stat-item__suffix mono">%</span>
-          <span class="stat-item__label">Placement support</span>
+          <span class="stat-item__label">placement support</span>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- ═══════════════════════════ COURSES ═══════════════════════════ -->
-    <section class="section courses-section" id="courses">
+    <!-- ───────────── COURSES ───────────── -->
+    <section class="section" id="courses">
       <div class="container">
-        <div class="section__header reveal">
-          <span class="section__pill">Courses</span>
-          <h2 class="section__h">What do you want to <span class="text-gradient">master?</span></h2>
-          <p class="section__sub">Hands-on, industry-built programs designed for where tech is going — not where it's been.</p>
+        <div class="reveal">
+          <p class="section__label">Courses</p>
+          <h2 class="section__h" style="max-width:520px;margin-bottom:12px;">
+            What do you want to <em>master?</em>
+          </h2>
+          <p class="section__sub" style="max-width:480px;margin-bottom:40px;">
+            Industry-built programs for where tech is going — not where it's been.
+          </p>
         </div>
 
-        <!-- Filter tabs -->
         <div class="filter-tabs reveal">
           <button class="filter-tab filter-tab--active" data-filter="all">All tracks</button>
           <button class="filter-tab" data-filter="ai">AI &amp; ML</button>
@@ -174,123 +189,93 @@
 
         <div class="courses-grid" id="coursesGrid">
 
-          <!-- Card 1: Gen AI -->
           <article class="course-card reveal" data-category="ai">
-            <div class="course-card__thumb">
-              <div class="course-card__thumb-bg course-card__thumb-bg--ai" aria-hidden="true"></div>
-              <div class="course-card__thumb-icon" aria-hidden="true">⚡</div>
-              <span class="course-card__cat-badge">AI &amp; ML</span>
-            </div>
-            <div class="course-card__body">
-              <div class="course-card__meta-top">
+            <div class="course-card__top">
+              <span class="course-card__num mono">01</span>
+              <div class="course-card__tags-row">
                 <span class="tag tag--hot">Most popular</span>
-                <span class="course-card__duration mono">8 weeks</span>
+                <span class="tag tag--sm mono">8 wk</span>
               </div>
-              <h3 class="course-card__title">Generative AI &amp; Prompt Engineering</h3>
-              <p class="course-card__desc">Master LLMs, RAG pipelines, agentic systems, and AI application development. The skill every company is hiring for right now.</p>
-              <div class="course-card__footer">
-                <div class="course-card__level">
-                  <span class="level-dot level-dot--all"></span>
-                  All levels
-                </div>
-                <a href="courses/generative-ai.html" class="btn btn--primary btn--sm">View course</a>
+            </div>
+            <h3 class="course-card__title">Generative AI &amp; Prompt Engineering</h3>
+            <p class="course-card__desc">Master LLMs, RAG pipelines, agentic systems, and AI application development. The skill every company is hiring for right now.</p>
+            <div class="course-card__footer">
+              <div class="course-card__level">
+                <span class="level-dot level-dot--all"></span>All levels
               </div>
+              <a href="courses/generative-ai.html" class="btn btn--primary btn--sm">View course</a>
             </div>
           </article>
 
-          <!-- Card 2: AI/ML -->
           <article class="course-card reveal reveal--delay-1" data-category="ai">
-            <div class="course-card__thumb">
-              <div class="course-card__thumb-bg course-card__thumb-bg--ml" aria-hidden="true"></div>
-              <div class="course-card__thumb-icon" aria-hidden="true">🧠</div>
-              <span class="course-card__cat-badge">AI &amp; ML</span>
-            </div>
-            <div class="course-card__body">
-              <div class="course-card__meta-top">
+            <div class="course-card__top">
+              <span class="course-card__num mono">02</span>
+              <div class="course-card__tags-row">
                 <span class="tag tag--demand">High demand</span>
-                <span class="course-card__duration mono">20 weeks</span>
+                <span class="tag tag--sm mono">20 wk</span>
               </div>
-              <h3 class="course-card__title">AI / ML Engineering</h3>
-              <p class="course-card__desc">From fundamentals to production — model training, evaluation, MLOps, and deployment at scale.</p>
-              <div class="course-card__footer">
-                <div class="course-card__level">
-                  <span class="level-dot level-dot--mid"></span>
-                  Intermediate
-                </div>
-                <a href="courses/ai-ml.html" class="btn btn--primary btn--sm">View course</a>
+            </div>
+            <h3 class="course-card__title">AI / ML Engineering</h3>
+            <p class="course-card__desc">From fundamentals to production — model training, evaluation, MLOps, and deployment at scale.</p>
+            <div class="course-card__footer">
+              <div class="course-card__level">
+                <span class="level-dot level-dot--mid"></span>Intermediate
               </div>
+              <a href="courses/ai-ml.html" class="btn btn--primary btn--sm">View course</a>
             </div>
           </article>
 
-          <!-- Card 3: Full Stack -->
           <article class="course-card reveal reveal--delay-2" data-category="fullstack">
-            <div class="course-card__thumb">
-              <div class="course-card__thumb-bg course-card__thumb-bg--fs" aria-hidden="true"></div>
-              <div class="course-card__thumb-icon" aria-hidden="true">🌐</div>
-              <span class="course-card__cat-badge">Full Stack</span>
-            </div>
-            <div class="course-card__body">
-              <div class="course-card__meta-top">
+            <div class="course-card__top">
+              <span class="course-card__num mono">03</span>
+              <div class="course-card__tags-row">
                 <span class="tag tag--demand">High demand</span>
-                <span class="course-card__duration mono">24 weeks</span>
+                <span class="tag tag--sm mono">24 wk</span>
               </div>
-              <h3 class="course-card__title">Full Stack Development</h3>
-              <p class="course-card__desc">React, Node.js, databases, APIs, cloud deployment, and modern DevOps. Build complete products from scratch.</p>
-              <div class="course-card__footer">
-                <div class="course-card__level">
-                  <span class="level-dot level-dot--beg"></span>
-                  Beginner–Mid
-                </div>
-                <a href="courses/fullstack.html" class="btn btn--primary btn--sm">View course</a>
+            </div>
+            <h3 class="course-card__title">Full Stack Development</h3>
+            <p class="course-card__desc">React, Node.js, databases, APIs, cloud deployment, and modern DevOps. Build complete products from scratch.</p>
+            <div class="course-card__footer">
+              <div class="course-card__level">
+                <span class="level-dot level-dot--beg"></span>Beginner–Mid
               </div>
+              <a href="courses/fullstack.html" class="btn btn--primary btn--sm">View course</a>
             </div>
           </article>
 
-          <!-- Card 4: Data Science -->
           <article class="course-card reveal reveal--delay-1" data-category="data">
-            <div class="course-card__thumb">
-              <div class="course-card__thumb-bg course-card__thumb-bg--ds" aria-hidden="true"></div>
-              <div class="course-card__thumb-icon" aria-hidden="true">📊</div>
-              <span class="course-card__cat-badge">Data</span>
-            </div>
-            <div class="course-card__body">
-              <div class="course-card__meta-top">
+            <div class="course-card__top">
+              <span class="course-card__num mono">04</span>
+              <div class="course-card__tags-row">
                 <span class="tag tag--demand">High demand</span>
-                <span class="course-card__duration mono">16 weeks</span>
+                <span class="tag tag--sm mono">16 wk</span>
               </div>
-              <h3 class="course-card__title">Data Science &amp; Engineering</h3>
-              <p class="course-card__desc">Analytics, pipelines, Python, SQL, visualisation, and building data products that drive real business decisions.</p>
-              <div class="course-card__footer">
-                <div class="course-card__level">
-                  <span class="level-dot level-dot--all"></span>
-                  All levels
-                </div>
-                <a href="courses/data-science.html" class="btn btn--primary btn--sm">View course</a>
+            </div>
+            <h3 class="course-card__title">Data Science &amp; Engineering</h3>
+            <p class="course-card__desc">Analytics, pipelines, Python, SQL, visualisation, and building data products that drive real business decisions.</p>
+            <div class="course-card__footer">
+              <div class="course-card__level">
+                <span class="level-dot level-dot--all"></span>All levels
               </div>
+              <a href="courses/data-science.html" class="btn btn--primary btn--sm">View course</a>
             </div>
           </article>
 
-          <!-- Card 5: Quantum -->
-          <article class="course-card course-card--featured reveal reveal--delay-2" data-category="quantum">
-            <div class="course-card__thumb">
-              <div class="course-card__thumb-bg course-card__thumb-bg--q" aria-hidden="true"></div>
-              <div class="course-card__thumb-icon" aria-hidden="true">⚛️</div>
-              <span class="course-card__cat-badge">Quantum</span>
-            </div>
-            <div class="course-card__body">
-              <div class="course-card__meta-top">
+          <article class="course-card reveal reveal--delay-2" data-category="quantum">
+            <div class="course-card__top">
+              <span class="course-card__num mono">05</span>
+              <div class="course-card__tags-row">
                 <span class="tag tag--new">Future track</span>
-                <span class="course-card__duration mono">8 weeks</span>
+                <span class="tag tag--sm mono">8 wk</span>
               </div>
-              <h3 class="course-card__title">Quantum Computing Foundations</h3>
-              <p class="course-card__desc">India's first industry-connected quantum track. Qubits, gates, circuits, and real-world applications. Get ahead of the curve.</p>
-              <div class="course-card__footer">
-                <div class="course-card__level">
-                  <span class="level-dot level-dot--adv"></span>
-                  Advanced
-                </div>
-                <a href="courses/quantum.html" class="btn btn--primary btn--sm">View course</a>
+            </div>
+            <h3 class="course-card__title">Quantum Computing Foundations</h3>
+            <p class="course-card__desc">India's first industry-connected quantum track. Qubits, gates, circuits, and real-world applications. Get ahead of the curve.</p>
+            <div class="course-card__footer">
+              <div class="course-card__level">
+                <span class="level-dot level-dot--adv"></span>Advanced
               </div>
+              <a href="courses/quantum.html" class="btn btn--primary btn--sm">View course</a>
             </div>
           </article>
 
@@ -302,99 +287,52 @@
       </div>
     </section>
 
-    <!-- ═══════════════════════════ HOW IT WORKS ═══════════════════════════ -->
-    <section class="section how-section" id="how-it-works">
-      <div class="how-section__bg" aria-hidden="true"></div>
+    <!-- ───────────── MENTORS ───────────── -->
+    <section class="section" id="mentors" style="background:var(--color-surface);border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__pill">Process</span>
-          <h2 class="section__h">From zero to <span class="text-gradient">job-ready</span></h2>
-          <p class="section__sub">A structured path — not a dump of content. Every step is designed to move you closer to your goal.</p>
+          <p class="section__label">Mentors</p>
+          <h2 class="section__h">Learn from <em>industry experts</em></h2>
+          <p class="section__sub">Every mentor is actively working in the field. No retired academics. No theory-only instructors.</p>
         </div>
-
-        <div class="how-grid">
-          <div class="how-step reveal">
-            <div class="how-step__num mono">01</div>
-            <div class="how-step__icon">🎯</div>
-            <h3 class="how-step__title">Choose your track</h3>
-            <p class="how-step__desc">Pick from 5 industry-aligned tech tracks. Our advisors help you find the right fit based on your background and goals.</p>
-          </div>
-          <div class="how-step__connector" aria-hidden="true"></div>
-          <div class="how-step reveal reveal--delay-1">
-            <div class="how-step__num mono">02</div>
-            <div class="how-step__icon">🚀</div>
-            <h3 class="how-step__title">Learn with practitioners</h3>
-            <p class="how-step__desc">Live sessions with active industry professionals. Hands-on projects, real codebases, and peer collaboration — not pre-recorded slides.</p>
-          </div>
-          <div class="how-step__connector" aria-hidden="true"></div>
-          <div class="how-step reveal reveal--delay-2">
-            <div class="how-step__num mono">03</div>
-            <div class="how-step__icon">💼</div>
-            <h3 class="how-step__title">Get placed</h3>
-            <p class="how-step__desc">Direct access to our 50+ hiring partner network from day one. Portfolio review, interview prep, and warm referrals to real roles.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════ MENTORS ═══════════════════════════ -->
-    <section class="section mentors-section" id="mentors">
-      <div class="container">
-        <div class="section__header reveal">
-          <span class="section__pill">Mentors</span>
-          <h2 class="section__h">Learn from <span class="text-gradient">industry experts</span></h2>
-          <p class="section__sub">Every mentor is actively working in the industry. No retired academics. No theory-only instructors.</p>
-        </div>
-
         <div class="mentors-grid">
           <div class="mentor-card reveal">
-            <div class="mentor-card__avatar mentor-card__avatar--1" aria-label="Mentor avatar">
-              <span>AK</span>
-            </div>
+            <div class="mentor-card__avatar mentor-card__avatar--1">AK</div>
             <h3 class="mentor-card__name">Arun Kumar</h3>
             <p class="mentor-card__role">AI Research Lead</p>
-            <p class="mentor-card__company">Ex-Google · 12 years in ML</p>
+            <p class="mentor-card__company">Ex-Google · 12 yrs in ML</p>
             <div class="mentor-card__tags">
               <span class="tag tag--sm">GenAI</span>
               <span class="tag tag--sm">MLOps</span>
               <span class="tag tag--sm">LLMs</span>
             </div>
           </div>
-
           <div class="mentor-card reveal reveal--delay-1">
-            <div class="mentor-card__avatar mentor-card__avatar--2" aria-label="Mentor avatar">
-              <span>SR</span>
-            </div>
+            <div class="mentor-card__avatar mentor-card__avatar--2">SR</div>
             <h3 class="mentor-card__name">Sneha Reddy</h3>
             <p class="mentor-card__role">Senior Data Engineer</p>
-            <p class="mentor-card__company">Ex-Amazon · 9 years in Data</p>
+            <p class="mentor-card__company">Ex-Amazon · 9 yrs in Data</p>
             <div class="mentor-card__tags">
-              <span class="tag tag--sm">Data Pipelines</span>
+              <span class="tag tag--sm">Pipelines</span>
               <span class="tag tag--sm">SQL</span>
               <span class="tag tag--sm">dbt</span>
             </div>
           </div>
-
           <div class="mentor-card reveal reveal--delay-2">
-            <div class="mentor-card__avatar mentor-card__avatar--3" aria-label="Mentor avatar">
-              <span>VM</span>
-            </div>
+            <div class="mentor-card__avatar mentor-card__avatar--3">VM</div>
             <h3 class="mentor-card__name">Vikram Menon</h3>
             <p class="mentor-card__role">Full Stack Architect</p>
-            <p class="mentor-card__company">Ex-Flipkart · 11 years in Dev</p>
+            <p class="mentor-card__company">Ex-Flipkart · 11 yrs in Dev</p>
             <div class="mentor-card__tags">
               <span class="tag tag--sm">React</span>
               <span class="tag tag--sm">Node.js</span>
               <span class="tag tag--sm">AWS</span>
             </div>
           </div>
-
           <div class="mentor-card reveal reveal--delay-3">
-            <div class="mentor-card__avatar mentor-card__avatar--4" aria-label="Mentor avatar">
-              <span>PB</span>
-            </div>
+            <div class="mentor-card__avatar mentor-card__avatar--4">PB</div>
             <h3 class="mentor-card__name">Priya Bhat</h3>
-            <p class="mentor-card__role">Quantum Computing Researcher</p>
+            <p class="mentor-card__role">Quantum Researcher</p>
             <p class="mentor-card__company">IIT Bombay · IBM Quantum</p>
             <div class="mentor-card__tags">
               <span class="tag tag--sm">Qiskit</span>
@@ -406,13 +344,13 @@
       </div>
     </section>
 
-    <!-- ═══════════════════════════ WHY UPSCALEQ ═══════════════════════════ -->
+    <!-- ───────────── WHY UPSCALEQ ───────────── -->
     <section class="section why-section">
       <div class="container why-inner">
         <div class="why-left reveal">
-          <span class="section__pill">Why UpscaleQ</span>
-          <h2 class="section__h">Built different.<br /><span class="text-gradient">On purpose.</span></h2>
-          <p class="section__sub" style="margin-bottom:0;">We didn't build another MOOC. We built a hiring machine backed by 15 years of direct industry relationships.</p>
+          <p class="section__label">Why UpscaleQ</p>
+          <h2 class="section__h">Built different.<br><em>On purpose.</em></h2>
+          <p class="section__sub">We didn't build another MOOC. We built a hiring machine backed by 15 years of direct industry relationships.</p>
         </div>
         <div class="why-right">
           <div class="why-point reveal">
@@ -426,14 +364,14 @@
             <div class="why-point__icon">🎯</div>
             <div>
               <h4 class="why-point__title">Direct hiring pipeline</h4>
-              <p class="why-point__desc">50+ company sourcing partnerships. Your placement isn't a promise — it's a structured pipeline with real partners.</p>
+              <p class="why-point__desc">50+ company sourcing partnerships. Your placement isn't a promise — it's a structured pipeline with real partners and warm referrals.</p>
             </div>
           </div>
           <div class="why-point reveal reveal--delay-2">
             <div class="why-point__icon">🧠</div>
             <div>
               <h4 class="why-point__title">Practitioner mentors only</h4>
-              <p class="why-point__desc">Every mentor is actively working in the industry. No retired academics. Real experience, real guidance.</p>
+              <p class="why-point__desc">Every mentor is actively working in the industry. No retired academics. Real experience, real guidance — every session.</p>
             </div>
           </div>
           <div class="why-point reveal reveal--delay-3">
@@ -447,47 +385,41 @@
       </div>
     </section>
 
-    <!-- ═══════════════════════════ TESTIMONIALS ═══════════════════════════ -->
-    <section class="section testimonials-section" id="testimonials">
+    <!-- ───────────── TESTIMONIALS ───────────── -->
+    <section class="section" id="testimonials">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__pill">Testimonials</span>
-          <h2 class="section__h">Real outcomes from <span class="text-gradient">real learners</span></h2>
+          <p class="section__label">Testimonials</p>
+          <h2 class="section__h">Real outcomes from <em>real learners</em></h2>
         </div>
-
         <div class="testimonials-grid">
           <article class="testimonial-card reveal">
-            <div class="testimonial-card__quote" aria-hidden="true">"</div>
-            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
-            <p class="testimonial-card__text">The GenAI course was unlike anything I'd taken before. Within 8 weeks I was building RAG pipelines and got placed at a startup as their first AI hire at 14 LPA.</p>
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p class="testimonial-card__text">Within 8 weeks I was building RAG pipelines and got placed at a startup as their first AI hire at 14 LPA. The course was unlike anything I'd taken before.</p>
             <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar mono">RV</div>
+              <div class="testimonial-card__avatar">RV</div>
               <div>
                 <div class="testimonial-card__name">Rahul Verma</div>
                 <div class="testimonial-card__course">GenAI &amp; Prompt Engineering</div>
               </div>
             </div>
           </article>
-
           <article class="testimonial-card reveal reveal--delay-1">
-            <div class="testimonial-card__quote" aria-hidden="true">"</div>
-            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
-            <p class="testimonial-card__text">I was a non-tech MBA grad. The Full Stack track gave me enough skills to build and ship our company's internal tool. Now I'm their de-facto product-engineer hybrid.</p>
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p class="testimonial-card__text">I was a non-tech MBA grad. The Full Stack track gave me enough skills to build and ship our company's internal tool. Now I'm their de-facto product-engineer.</p>
             <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar mono">AP</div>
+              <div class="testimonial-card__avatar">AP</div>
               <div>
                 <div class="testimonial-card__name">Ananya Pillai</div>
                 <div class="testimonial-card__course">Full Stack Development</div>
               </div>
             </div>
           </article>
-
           <article class="testimonial-card reveal reveal--delay-2">
-            <div class="testimonial-card__quote" aria-hidden="true">"</div>
-            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
-            <p class="testimonial-card__text">The ML Engineering course covered things no online MOOC does — MLOps, production deployment, drift monitoring. I cleared my ML system design rounds with ease.</p>
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p class="testimonial-card__text">The ML course covered things no online MOOC does — MLOps, production deployment, drift monitoring. I cleared my system design rounds with ease.</p>
             <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar mono">KS</div>
+              <div class="testimonial-card__avatar">KS</div>
               <div>
                 <div class="testimonial-card__name">Karthik Sharma</div>
                 <div class="testimonial-card__course">AI / ML Engineering</div>
@@ -498,19 +430,18 @@
       </div>
     </section>
 
-    <!-- ═══════════════════════════ PARTNERS ═══════════════════════════ -->
-    <section class="section partners-section" id="partners">
+    <!-- ───────────── PARTNERS ───────────── -->
+    <section class="section" id="partners" style="background:var(--color-surface);border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__pill">Technical Partners</span>
-          <h2 class="section__h">Backed by <span class="text-gradient">industry leaders</span></h2>
-          <p class="section__sub">Our technical partnerships bring real-world depth to everything we teach — from curriculum design to placement networks.</p>
+          <p class="section__label">Technical Partners</p>
+          <h2 class="section__h">Backed by <em>industry leaders</em></h2>
+          <p class="section__sub">Our technical partnerships bring real-world depth to everything we teach — from curriculum to placement networks.</p>
         </div>
-
         <div class="partners-grid">
           <a href="https://www.lavutechsolutions.com/" target="_blank" rel="noopener" class="partner-card reveal">
             <div class="partner-card__mono pm--lavu">LT</div>
-            <div class="partner-card__info">
+            <div>
               <h3 class="partner-card__name">Lavu Tech Solutions</h3>
               <p class="partner-card__loc">🇲🇾 Malaysia</p>
               <p class="partner-card__desc">Full-spectrum IT solutions partner. Curriculum design for enterprise and practical engineering tracks.</p>
@@ -521,13 +452,12 @@
             </div>
             <span class="partner-card__arrow">↗</span>
           </a>
-
           <a href="https://www.digitaltechsolutions.com.sg/" target="_blank" rel="noopener" class="partner-card reveal reveal--delay-1">
             <div class="partner-card__mono pm--dts">DT</div>
-            <div class="partner-card__info">
+            <div>
               <h3 class="partner-card__name">Digital Tech Solutions</h3>
               <p class="partner-card__loc">🇸🇬 Singapore</p>
-              <p class="partner-card__desc">AI/ML, IoT, cloud migration, and app development. Brings global perspective and SEA hiring networks.</p>
+              <p class="partner-card__desc">AI/ML, IoT, cloud migration, and app development. Brings global perspective and Southeast Asian hiring networks.</p>
             </div>
             <div class="partner-card__tags">
               <span class="tag tag--sm">AI / ML</span>
@@ -536,10 +466,9 @@
             </div>
             <span class="partner-card__arrow">↗</span>
           </a>
-
           <a href="https://www.fortuneits.com/" target="_blank" rel="noopener" class="partner-card reveal reveal--delay-2">
             <div class="partner-card__mono pm--fortune">FI</div>
-            <div class="partner-card__info">
+            <div>
               <h3 class="partner-card__name">Fortune ITS</h3>
               <p class="partner-card__loc">🇲🇾 Malaysia</p>
               <p class="partner-card__desc">Established IT services company strengthening our hiring pipeline and domain expertise across industry verticals.</p>
@@ -554,24 +483,28 @@
       </div>
     </section>
 
-    <!-- ═══════════════════════════ CORPORATE ═══════════════════════════ -->
-    <section class="section corporate-section">
+    <!-- ───────────── CORPORATE ───────────── -->
+    <section class="section" id="corporate">
       <div class="container">
         <div class="corporate-banner reveal">
-          <div class="corporate-banner__bg" aria-hidden="true"></div>
           <div class="corporate-banner__content">
-            <span class="section__pill section__pill--light">Corporate training</span>
-            <h2 class="corporate-banner__h">Upskill your <span class="text-gradient">entire tech team.</span></h2>
+            <p class="section__label">Corporate training</p>
+            <h2 class="corporate-banner__h">Upskill your <em>entire tech team.</em></h2>
             <p class="corporate-banner__sub">Custom programs built around your stack, timeline, and goals. Batch training, individual tracks, or full L&amp;D partnerships.</p>
             <div class="corporate-banner__actions">
-              <a href="enroll.html" class="btn btn--primary btn--lg">Get a proposal</a>
-              <a href="mailto:hello@upscaleq.com" class="btn btn--ghost btn--lg">Talk to us</a>
+              <a href="enroll.html"               class="btn btn--primary btn--lg">Get a proposal</a>
+              <a href="mailto:hello@upscaleq.com" class="btn btn--ghost   btn--lg">Talk to us</a>
             </div>
           </div>
-          <div class="corporate-banner__deco" aria-hidden="true">
-            <div class="corp-deco-circle corp-deco-circle--1"></div>
-            <div class="corp-deco-circle corp-deco-circle--2"></div>
-            <span class="corp-deco-text mono">L&amp;D</span>
+          <div class="corporate-banner__stat-col">
+            <div class="corp-stat">
+              <span class="corp-stat__num mono">50+</span>
+              <p class="corp-stat__label">Companies trained</p>
+            </div>
+            <div class="corp-stat">
+              <span class="corp-stat__num mono">3</span>
+              <p class="corp-stat__label">Delivery formats</p>
+            </div>
           </div>
         </div>
       </div>
@@ -579,11 +512,11 @@
 
   </main>
 
-  <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+  <!-- FOOTER -->
   <footer class="footer" id="contact">
     <div class="container footer__inner">
       <div class="footer__brand">
-        <a href="index.html" class="footer__logo">Upscale<span>Q</span></a>
+        <a href="index.html" class="footer__logo">Upscale<em>Q</em></a>
         <p class="footer__tagline">Learn today. Lead tomorrow.</p>
         <div class="footer__socials">
           <a href="#" class="footer__social" aria-label="LinkedIn">in</a>
@@ -591,7 +524,6 @@
           <a href="#" class="footer__social" aria-label="Instagram">ig</a>
         </div>
       </div>
-
       <div class="footer__col">
         <h4 class="footer__col-title">Courses</h4>
         <ul class="footer__links">
@@ -602,27 +534,23 @@
           <li><a href="courses/quantum.html">Quantum Computing</a></li>
         </ul>
       </div>
-
       <div class="footer__col">
         <h4 class="footer__col-title">Company</h4>
         <ul class="footer__links">
           <li><a href="#mentors">Mentors</a></li>
           <li><a href="#partners">Partners</a></li>
-          <li><a href="#how-it-works">How it works</a></li>
-          <li><a href="enroll.html">Corporate training</a></li>
+          <li><a href="#corporate">Corporate training</a></li>
+          <li><a href="enroll.html">Enroll</a></li>
         </ul>
       </div>
-
       <div class="footer__col">
         <h4 class="footer__col-title">Contact</h4>
         <ul class="footer__links">
           <li><a href="mailto:hello@upscaleq.com">hello@upscaleq.com</a></li>
           <li><a href="#">Hyderabad, India</a></li>
-          <li><a href="enroll.html">Enroll now</a></li>
         </ul>
       </div>
     </div>
-
     <div class="footer__bottom">
       <div class="container footer__bottom-inner">
         <span>© 2026 UpscaleQ · upscaleq.com</span>
